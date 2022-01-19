@@ -4,6 +4,7 @@
 //
 //  Created by Nikola Andrijasevic on 8.1.22..
 //
+import Foundation
 import Firebase
 import UIKit
 
@@ -15,6 +16,16 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.bool(forKey: "AdminLogged") == true {
+             self.navigationController?.pushViewController(AllUsersViewController(), animated: false)
+        } else if  UserDefaults.standard.bool(forKey: "UserLogged") == true {
+            
+                self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
+            
+        } else {
+            return
+        }
         
     }
     
@@ -48,21 +59,31 @@ class LogInViewController: UIViewController {
 
         handle = Auth.auth().addStateDidChangeListener{error,user in
             if user != nil{
-                self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
+                let uid = Auth.auth().currentUser?.uid
+                let child = DataObjects.infoRef.child(uid!)
+                child.child("isAdmin").observeSingleEvent(of: .value, with: {(snapshot) in
+                    
+                    let data = snapshot.value as? Bool
+                    if data == true{
+                        UserDefaults.standard.set(true, forKey: "AdminLogged")
+                        self.navigationController?.pushViewController(AllUsersViewController(), animated: true)
+                        
+                        
+                    } else {
+                        UserDefaults.standard.set(true, forKey: "UserLogged")
+                        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
+                    }
+                })
+                
                 self.password.text = nil
                 self.username.text = nil
                 
             } else {
                 print("you dont have that user")
             }
-// Auth.auth().signIn(withEmail: email, password: password){result,_ in
-//            let uid = Auth.auth().currentUser?.uid
-//            let ref = DataObjects.infoRef.child(uid!)
-//            ref.setValue(["uid":uid,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username])
-//            self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
-        }
+    }
     }
     
-}
+    }
 
 

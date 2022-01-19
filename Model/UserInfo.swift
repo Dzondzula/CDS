@@ -13,19 +13,21 @@ import UIKit
 
 struct UserInfo{
     let ref: DatabaseReference?
-    let key: String?
-    let firstName: String?
-    let lastName: String?
-    let username: String?
+    let key: String
+    let firstName: String
+    let lastName: String
+    let username: String
     let pictureURL : String?
+    let admin : Bool
     
-    init(firstName: String, lastName:String,username:String,pictureURL:String?, key:String? = "" ){
+    init(firstName: String, lastName:String,username:String,pictureURL:String?,admin:Bool, key:String = "" ){
         self.ref = nil
         self.key = key
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.pictureURL = pictureURL
+        self.admin = admin
         
     }
     
@@ -34,7 +36,9 @@ struct UserInfo{
               let firstName = value["firstName"] as? String,
               let lastName = value["lastName"] as? String,
               let username = value["userName"] as? String,
-              let profilePic = value["pictureURL"] as? String
+              let profilePic = value["pictureURL"] as? String,
+              let admin = value["isAdmin"] as? Bool
+                
         else {return nil}
     
         self.ref = snapshot.ref
@@ -43,13 +47,15 @@ struct UserInfo{
         self.lastName = lastName
         self.username = username
         self.pictureURL = profilePic
+        self.admin = admin
     }
     func toAnyObject()-> Any{
         return [
             "firstName": firstName,
             "lastName": lastName,
             "username": username,
-            "pictureURL":pictureURL
+            "pictureURL":pictureURL as Any,
+            "isAdmin": admin
         ]
     }
 

@@ -17,6 +17,38 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     
     var refObserver:[DatabaseHandle] = []
     
+    var arr = ["Ada","Belgrade","San Franci","dzi","Alakadava dzidzada"]
+    
+//    lazy var trainingView: UIView = {
+//        let cv = UIView()
+//        cv.backgroundColor = .red
+//        cv.addSubview(collectionView)
+//        collectionView.frame = cv.bounds
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: cv.topAnchor,constant: 30),
+//            collectionView.leadingAnchor.constraint(equalTo: cv.leadingAnchor,constant: 10)
+//        ])
+        
+//        return cv
+//    }()
+    lazy var collectionView :UICollectionView = {
+         let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 40, left: 0, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 10
+        
+        let cv = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        
+        cv.collectionViewLayout = layout
+         cv.delegate = self
+        cv.dataSource = self
+        cv.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "trainingCell")
+
+        cv.backgroundColor = .blue
+        cv.translatesAutoresizingMaskIntoConstraints = false
+         return cv
+       
+    }()
     lazy var containerView: UIView = {
        let cv = UIView()
         cv.backgroundColor = .blue
@@ -66,24 +98,36 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         
         return name
     }()
-   
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
+        
         let editBttn = editButtonItem
         navigationItem.rightBarButtonItems = [editBttn,signOutButton]
         view.backgroundColor = .white
+       
         
         view.addSubview(containerView)
+        view.addSubview(collectionView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         NSLayoutConstraint.activate([
      
         containerView.topAnchor.constraint(equalTo: view.topAnchor),
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
         containerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        containerView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/3)
+        containerView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/3),
+        
+        collectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor,constant: 10),
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/3)
         
         ])
         
@@ -95,19 +139,25 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                 self.informations = userInfo
             }
             self.nameLabel.text = self.informations[0].username
-            
+//            if let picture = item.pictureURL,
+//               let url = URL(string: picture){
+//            profileImageView.loadImage(url: url)
+            if let picture = self.informations[0].pictureURL,
+               let url = URL(string: picture){
+            self.profilePicture.loadImage(url: url)
+            }
         }
-        
-                guard let urlString = UserDefaults.standard.value(forKey: "url") as? String,
-                      let url = URL(string: urlString) else {return}
-                URLSession.shared.dataTask(with: url) {data,_,err in
-                    guard let data = data, err == nil else {return}
-        
-                    DispatchQueue.main.async {
-                    let image = UIImage(data: data)
-                    self.profilePicture.image = image
-                    }
-                }.resume()
+        //desava se da admin nema sign out opciju pa u user defaults ostaje njegov link ka slicigmm
+//                guard let urlString = UserDefaults.standard.value(forKey: "url") as? String,
+//                      let url = URL(string: urlString) else {return}
+//                URLSession.shared.dataTask(with: url) {data,_,err in
+//                    guard let data = data, err == nil else {return}
+//
+//                    DispatchQueue.main.async {
+//                    let image = UIImage(data: data)
+//                    self.profilePicture.image = image
+//                    }
+//                }.resume()
         
             }
 
@@ -123,8 +173,8 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                     let firstName = dictionary["firstName"] as! String
                     let lastName = dictionary["lastName"] as! String
                     let profilePic = dictionary["pictureURL"] as? String
-                    
-                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic)
+                    let admin = dictionary["isAdmin"] as! Bool
+                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic, admin: admin)
                     newArray.append(userInformation)
                     print(newArray)
                     completion(.success(newArray))
@@ -156,13 +206,13 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     }
     @objc func signOutTapped(){
         
-        guard let user = Auth.auth().currentUser else {return}
-        let onlineRef = DataObjects.rootRef.child("online/\(user.uid)")
-        
-        onlineRef.removeValue { error,_ in
-            print("removing failed")
-            return
-        }
+//        guard let user = Auth.auth().currentUser else {return}
+//        let onlineRef = DataObjects.rootRef.child("online/\(user.uid)")
+//
+//        onlineRef.removeValue { error,_ in
+//            print("removing failed")
+//            return
+//        }
         
         do{
             try Auth.auth().signOut()
@@ -221,7 +271,7 @@ extension UserProfileViewController: UIImagePickerControllerDelegate{
                 ref.updateChildValues(post)
                
                 print("Download URL: \(urlString)")
-                UserDefaults.standard.set(urlString, forKey: "url")
+               UserDefaults.standard.set(urlString, forKey: "ProfilePicture")
             })
         })
         
@@ -250,55 +300,46 @@ extension UserProfileViewController: UIImagePickerControllerDelegate{
     }
 }
 
-extension UIView {
-    
-    func anchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, paddingTop: CGFloat? = 0,
-                paddingLeft: CGFloat? = 0, paddingBottom: CGFloat? = 0, paddingRight: CGFloat? = 0, width: CGFloat? = nil, height: CGFloat? = nil) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        if let top = top {
-            topAnchor.constraint(equalTo: top, constant: paddingTop!).isActive = true
-        }
-        
-        if let left = left {
-            leftAnchor.constraint(equalTo: left, constant: paddingLeft!).isActive = true
-        }
-        
-        if let bottom = bottom {
-            if let paddingBottom = paddingBottom {
-                bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
-            }
-        }
-        
-        if let right = right {
-            if let paddingRight = paddingRight {
-                rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
-            }
-        }
-        
-        if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
-        }
-        
-        if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
-    }
-}
-extension UILabel{
 
+extension UserProfileViewController:   UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
-    func enable(){
-        let label = UILabel()
-        label.isUserInteractionEnabled = true
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            // dataArary is the managing array for your UICollectionView.
+//            let item = arr[indexPath.row]
+//            let itemSize = item.size(withAttributes: [
+//                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)
+//            ]).width + 30
+        
+        return  CGSize(width: arr[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)]).width + 40, height: 40)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, numberOfSections section: Int) -> Int {
+            return 1
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return arr.count
     }
-//    func tapped(recognizer: UIGestureRecognizer){
-//        if recognizer.state == .ended{
-//            let label = UILabel()
-//            label.isUserInteractionEnabled = true
-//            label.becomeFirstResponder()
-//            print("ide lol")
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingCell", for: indexPath) as! TagCollectionViewCell
+        cell.sportLabel.text = arr[indexPath.row]
+        
+        cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
+        cell.deleteButton.addTarget(self, action: #selector(deleteTapped(_:)), for: .touchUpInside)
+       
+        
+        return cell
+    }
+
+}
+
+extension UserProfileViewController {
+    @objc func deleteTapped(_ sender: UIButton) {
+        guard let index : Int = (sender.layer.value(forKey: "index")) as? Int else {return}
+        arr.remove(at: index)
+        let ref = DataObjects.infoRef.child(uid!)
+                        let post = ["Training":arr]
+                        ref.updateChildValues(post)
+        collectionView.reloadData()
+    }
 }

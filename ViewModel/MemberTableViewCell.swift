@@ -10,14 +10,16 @@ import UIKit
 class MemberTableViewCell: UITableViewCell {
     
     func config(with item: UserInfo){
-        guard let picture = item.pictureURL else {return}
-        if let url = URL(string: picture){
+        if item.admin == false{
+        if let picture = item.pictureURL,
+           let url = URL(string: picture){
         profileImageView.loadImage(url: url)
+        } else {
+            profileImageView.image = UIImage(named: "venom")
+        }
             nameLabel.text = item.firstName
-            
     }
     }
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

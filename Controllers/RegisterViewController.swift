@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-        
+        let admin:Bool = false
         guard let password = passwordText.text,
               let username = usernameText.text,
               let email = emailText.text,
@@ -41,7 +41,8 @@ class RegisterViewController: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: password){result,_ in
                     let uid = Auth.auth().currentUser?.uid
                     let ref = DataObjects.infoRef.child(uid!)
-                    ref.setValue(["uid":uid,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username])
+                    ref.setValue(["uid":uid!,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username,"isAdmin":admin])
+                    UserDefaults.standard.set(true, forKey: "UserLogged")
                     self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
                 }
             } else {
