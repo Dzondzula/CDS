@@ -4,6 +4,7 @@
 //
 //  Created by Nikola Andrijasevic on 8.1.22..
 //
+
 import FirebaseStorage
 import Firebase
 import UIKit
@@ -17,20 +18,15 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     
     var refObserver:[DatabaseHandle] = []
     
-    var arr = ["Ada","Belgrade","San Franci","dzi","Alakadava dzidzada"]
+    var arr : [String] = []
     
-//    lazy var trainingView: UIView = {
-//        let cv = UIView()
-//        cv.backgroundColor = .red
-//        cv.addSubview(collectionView)
-//        collectionView.frame = cv.bounds
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: cv.topAnchor,constant: 30),
-//            collectionView.leadingAnchor.constraint(equalTo: cv.leadingAnchor,constant: 10)
-//        ])
+    
         
-//        return cv
-//    }()
+        //define typealias-es
+        typealias TranslationTuple = (name: String, translated: String)
+        typealias TranslationDictionary = [String : String]
+    
+
     lazy var collectionView :UICollectionView = {
          let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 40, left: 0, bottom: 10, right: 10)
@@ -42,7 +38,7 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         cv.collectionViewLayout = layout
          cv.delegate = self
         cv.dataSource = self
-        cv.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "trainingCell")
+        cv.register(userTagCollectionViewCell.self, forCellWithReuseIdentifier: "trainingCell")
 
         cv.backgroundColor = .blue
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +75,7 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     
     lazy var profilePicture: UIImageView = {
         let picture = UIImageView()
-        picture.backgroundColor = .brown
+        picture.backgroundColor = .clear
         picture.image = UIImage(named: "venom")
         picture.contentMode = .scaleAspectFill
         picture.clipsToBounds = true
@@ -98,22 +94,79 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         
         return name
     }()
+
+    lazy var paymentView :UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.addSubview(paymentViewTitle)
+        view.addSubview(paymentStatusPicture)
+        view.addSubview(paymentStatusLabel)
+        view.addSubview(trainingPriceLabel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+            
+        NSLayoutConstraint.activate([
+            paymentViewTitle.topAnchor.constraint(equalTo: view.topAnchor),
+            paymentViewTitle.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 10),
+
+            trainingPriceLabel.topAnchor.constraint(equalTo: paymentViewTitle.bottomAnchor,constant: 40),
+            trainingPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20),
+
+            paymentStatusPicture.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            paymentStatusPicture.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20),
+            paymentStatusPicture.widthAnchor.constraint(equalToConstant: 120),
+            paymentStatusPicture.heightAnchor.constraint(equalToConstant: 120),
+
+            paymentStatusLabel.topAnchor.constraint(equalTo: paymentStatusPicture.bottomAnchor,constant: 10),
+            paymentStatusLabel.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10),
+        ])
+        return view
+    }()
+    
+    lazy var paymentStatusPicture: UIImageView = {
+        let picture = UIImageView()
+        picture.image = UIImage(named: "unpaid")
+        picture.contentMode = .scaleAspectFill
+        picture.clipsToBounds = true
+        picture.translatesAutoresizingMaskIntoConstraints = false
+        
+        return picture
+        
+    }()
+    
+    lazy var paymentStatusLabel : UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Nije placeno"
+        return label
+    }()
+    lazy var trainingPriceLabel : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "00,00"
+        return label
+    }()
+    
+    lazy var paymentViewTitle : UILabel = {
+       let label = UILabel()
+        label.text = "Training status"
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.navigationItem.setHidesBackButton(true, animated: true)
-        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
-        
-        let editBttn = editButtonItem
-        navigationItem.rightBarButtonItems = [editBttn,signOutButton]
         view.backgroundColor = .white
        
         
         view.addSubview(containerView)
         view.addSubview(collectionView)
+        view.addSubview(paymentView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -126,8 +179,13 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         
         collectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor,constant: 10),
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/3)
+        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier: 1/2),
+        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/4),
+        
+        paymentView.topAnchor.constraint(equalTo: collectionView.bottomAnchor,constant: 10),
+        paymentView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        paymentView.widthAnchor.constraint(equalTo: view.widthAnchor),
+        paymentView.heightAnchor.constraint(equalTo: view.heightAnchor,multiplier: 1/3)
         
         ])
         
@@ -139,14 +197,38 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                 self.informations = userInfo
             }
             self.nameLabel.text = self.informations[0].username
-//            if let picture = item.pictureURL,
-//               let url = URL(string: picture){
-//            profileImageView.loadImage(url: url)
+
+            DispatchQueue.main.async {
+                guard let training = self.informations[0].training else {return }
+            self.arr = training
+            self.collectionView.reloadData()
+            }
             if let picture = self.informations[0].pictureURL,
                let url = URL(string: picture){
             self.profilePicture.loadImage(url: url)
             }
-        }
+            let uid = Auth.auth().currentUser?.uid
+            let child = DataObjects.infoRef.child(uid!)//add to service
+            let child2 = child.child("Payments")
+            child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
+                
+                let data = snapshot.value as? Bool
+                if data == true{
+                    self.paymentStatusPicture.image = UIImage(named: "paid")
+                    paymentStatusLabel.text = "Active"
+                } else{
+                    self.paymentStatusPicture.image = UIImage(named: "unpaid")
+                    paymentStatusLabel.text = "Expired"
+                }
+            })
+            child2.child("Price").observeSingleEvent(of: .value, with: { [self](snapshot) in
+                if snapshot.exists(){
+                let data = snapshot.value as! Int
+                trainingPriceLabel.text = "\(data),00 RSD"
+            }
+            })
+    }
+       
         //desava se da admin nema sign out opciju pa u user defaults ostaje njegov link ka slicigmm
 //                guard let urlString = UserDefaults.standard.value(forKey: "url") as? String,
 //                      let url = URL(string: urlString) else {return}
@@ -159,11 +241,11 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
 //                    }
 //                }.resume()
         
-            }
-
+    }
+    
     func fetch(completion: @escaping (Result<[UserInfo],NetworkError>)-> Void){
         
-            let uid = Auth.auth().currentUser?.uid
+           
             
 //      let completed =
         DataObjects.infoRef.child(uid!).observe(.value){ snapshot,error in
@@ -173,8 +255,10 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                     let firstName = dictionary["firstName"] as! String
                     let lastName = dictionary["lastName"] as! String
                     let profilePic = dictionary["pictureURL"] as? String
+                    let training = dictionary["Training"] as? [String]
+                    let uid = dictionary["uid"] as! String
                     let admin = dictionary["isAdmin"] as! Bool
-                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic, admin: admin)
+                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic,training: training, uid: uid, admin: admin)
                     newArray.append(userInformation)
                     print(newArray)
                     completion(.success(newArray))
@@ -190,6 +274,11 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
+      
+        let editBttn = editButtonItem
+        self.tabBarController!.navigationItem.rightBarButtonItems = [editBttn,signOutButton]
+        self.tabBarController?.navigationController?.isNavigationBarHidden = false
        
     }
     
@@ -197,6 +286,9 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         super.viewDidDisappear(true)
         
     }
+    
+   
+    
     func resetDefaults() {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
@@ -288,7 +380,6 @@ extension UserProfileViewController: UIImagePickerControllerDelegate{
         vc.delegate = self
         vc.allowsEditing = true
         present(vc, animated: true)
-        
     }
     
     func openPhotos(){
@@ -310,7 +401,7 @@ extension UserProfileViewController:   UICollectionViewDataSource, UICollectionV
 //                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)
 //            ]).width + 30
         
-        return  CGSize(width: arr[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)]).width + 40, height: 40)
+        return  CGSize(width: arr[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)]).width + 10 , height: 40)
         }
 
         func collectionView(_ collectionView: UICollectionView, numberOfSections section: Int) -> Int {
@@ -321,11 +412,11 @@ extension UserProfileViewController:   UICollectionViewDataSource, UICollectionV
         return arr.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingCell", for: indexPath) as! TagCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingCell", for: indexPath) as! userTagCollectionViewCell
         cell.sportLabel.text = arr[indexPath.row]
         
-        cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
-        cell.deleteButton.addTarget(self, action: #selector(deleteTapped(_:)), for: .touchUpInside)
+//        cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
+//        cell.deleteButton.addTarget(self, action: #selector(deleteTapped(_:)), for: .touchUpInside)
        
         
         return cell
@@ -333,13 +424,4 @@ extension UserProfileViewController:   UICollectionViewDataSource, UICollectionV
 
 }
 
-extension UserProfileViewController {
-    @objc func deleteTapped(_ sender: UIButton) {
-        guard let index : Int = (sender.layer.value(forKey: "index")) as? Int else {return}
-        arr.remove(at: index)
-        let ref = DataObjects.infoRef.child(uid!)
-                        let post = ["Training":arr]
-                        ref.updateChildValues(post)
-        collectionView.reloadData()
-    }
-}
+

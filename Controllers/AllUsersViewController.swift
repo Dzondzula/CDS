@@ -4,6 +4,7 @@
 //
 //  Created by Nikola Andrijasevic on 13.1.22..
 //
+import FirebaseDatabase
 import Firebase
 import UIKit
 
@@ -22,24 +23,30 @@ class AllUsersViewController: UIViewController {
         return table
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
+        
+        self.tabBarController!.navigationItem.rightBarButtonItems = [signOutButton]
+        self.navigationController?.hidesBarsOnSwipe = false
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        navigationItem.rightBarButtonItem = signOutButton
-        
         view.backgroundColor = .white
-        
-        view.addSubview(tableView)
-        
+
+        view.addSubview(tableView)//Put in extension
             tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
             tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+               fetch()//performBG
+//        self.tableView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
+      
         
-        fetch()
     }
     
     func fetch(){
@@ -55,11 +62,14 @@ class AllUsersViewController: UIViewController {
                     let firstName = dictionary["firstName"] as! String
                     let lastName = dictionary["lastName"] as! String
                     let profilePic = dictionary["pictureURL"] as? String
+                    let training = dictionary["Training"] as? [String]
+                    let isPaid = dictionary["isPaid"] as? Bool
+                    let uid = dictionary ["uid"] as! String
                     let admin = dictionary["isAdmin"] as! Bool
                     
-                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic, admin: admin)
+                    let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic,training: training, uid: uid, admin: admin)
                     newArray.append(userInformation)
-                    print(newArray)
+                    
                     
                     DispatchQueue.main.async {
                         self.users = newArray
@@ -106,7 +116,7 @@ class AllUsersViewController: UIViewController {
 extension AllUsersViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return users.count - 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
@@ -115,11 +125,18 @@ extension AllUsersViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "userCell",for: indexPath) as! MemberTableViewCell
         cell.config(with: users[indexPath.item])
-//        cell.nameLabel.text = "idegas"
-//        cell.trainingLabel.text = "lol treniram"
-//        cell.profileImageView.image = UIImage(named: "venom")
+
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = MemberViewController()
+        vc.detailItem = users[indexPath.row]
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC,animated: true)
+
+    }
+    
 }
 
 extension AllUsersViewController{
@@ -129,3 +146,29 @@ extension AllUsersViewController{
         
     }
 }
+
+//typealias Dispatch = DispatchQueue
+
+//extension Dispatch {
+//
+//    static func background(_ task: @escaping () -> ()) {
+//        Dispatch.global(qos: .background).async {
+//            task()
+//        }
+//    }
+//
+//    static func main(_ task: @escaping () -> ()) {
+//        Dispatch.main.async {
+//            task()
+//        }
+//    }
+//}
+//Usage :
+//
+//Dispatch.background {
+//    // do stuff
+//
+//    Dispatch.main {
+//        // update UI
+//    }
+//}

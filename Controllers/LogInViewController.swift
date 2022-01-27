@@ -8,22 +8,35 @@ import Foundation
 import Firebase
 import UIKit
 
-class LogInViewController: UIViewController {
+@IBDesignable class LogInViewController: UIViewController {
 
     var handle : AuthStateDidChangeListenerHandle?
-    
+   
+    @IBOutlet weak var forgot: UIButton!
+    @IBOutlet weak var register: UIButton!
+    @IBOutlet weak var login: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UserDefaults.standard.bool(forKey: "AdminLogged") == true {
-             self.navigationController?.pushViewController(AllUsersViewController(), animated: false)
-        } else if  UserDefaults.standard.bool(forKey: "UserLogged") == true {
-            
-                self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
-            
-        } else {
+  
+//        backgroundImage.image = UIImage(named: "CDS2")
+//        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFit
+//        self.view.insertSubview(backgroundImage, at: 0)
+//        self.tabBarController?.tabBar.isHidden = true
+//            self.tabBarController?.tabBar.frame = .zero
+        Utilities.styleFilledButton(login)
+        Utilities.styleHollowButton(register)
+        Utilities.styleTextField(username)
+        Utilities.styleTextField(password)
+        if UserDefaults.standard.bool(forKey: "Logged") == true {
+             self.navigationController?.pushViewController(TabViewController(), animated: false)
+        }
+//         else if  UserDefaults.standard.bool(forKey: "UserLogged") == true {
+//
+//                self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
+//
+         else {
             return
         }
         
@@ -59,24 +72,23 @@ class LogInViewController: UIViewController {
 
         handle = Auth.auth().addStateDidChangeListener{error,user in
             if user != nil{
-                let uid = Auth.auth().currentUser?.uid
-                let child = DataObjects.infoRef.child(uid!)
-                child.child("isAdmin").observeSingleEvent(of: .value, with: {(snapshot) in
-                    
-                    let data = snapshot.value as? Bool
-                    if data == true{
-                        UserDefaults.standard.set(true, forKey: "AdminLogged")
-                        self.navigationController?.pushViewController(AllUsersViewController(), animated: true)
-                        
-                        
-                    } else {
-                        UserDefaults.standard.set(true, forKey: "UserLogged")
-                        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
-                    }
-                })
-                
+//                let uid = Auth.auth().currentUser?.uid
+//                let child = DataObjects.infoRef.child(uid!)
+//                child.child("isAdmin").observeSingleEvent(of: .value, with: {(snapshot) in
+//
+//                    let data = snapshot.value as? Bool
+//                    if data == true{
+                        UserDefaults.standard.set(true, forKey: "Logged")
+//                        self.navigationController?.pushViewController(AllUsersViewController(), animated: true)
+//
+//
+//                    } else {
+//                        UserDefaults.standard.set(true, forKey: "UserLogged")
+//                        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
+//                    }
+//                })
+                self.navigationController?.pushViewController(TabViewController(), animated: true)
                 self.password.text = nil
-                self.username.text = nil
                 
             } else {
                 print("you dont have that user")

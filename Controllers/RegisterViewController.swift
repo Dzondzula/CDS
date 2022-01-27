@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tabBarController?.hidesBottomBarWhenPushed = true
         
     }
     
@@ -42,9 +42,9 @@ class RegisterViewController: UIViewController {
                     let uid = Auth.auth().currentUser?.uid
                     let ref = DataObjects.infoRef.child(uid!)
                     ref.setValue(["uid":uid!,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username,"isAdmin":admin])
-                    UserDefaults.standard.set(true, forKey: "UserLogged")
-                    self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
-                }
+                    UserDefaults.standard.set(true, forKey: "Logged")
+                    self.navigationController?.pushViewController(TabViewController(), animated: true)
+                }//toAnyObject can be used here
             } else {
                 print("error in user creation")
             }
