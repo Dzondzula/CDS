@@ -63,7 +63,6 @@ class AllUsersViewController: UIViewController {
                     let lastName = dictionary["lastName"] as! String
                     let profilePic = dictionary["pictureURL"] as? String
                     let training = dictionary["Training"] as? [String]
-                    let isPaid = dictionary["isPaid"] as? Bool
                     let uid = dictionary ["uid"] as! String
                     let admin = dictionary["isAdmin"] as! Bool
                     

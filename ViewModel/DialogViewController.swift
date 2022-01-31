@@ -137,7 +137,7 @@ open class DialogViewController: UIViewController {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         picker.datePickerMode = .time
-        picker.preferredDatePickerStyle = .wheels
+        //picker.preferredDatePickerStyle = .wheels
         
         time.inputAccessoryView = toolbar
         time.inputView = picker

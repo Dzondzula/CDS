@@ -20,15 +20,14 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
   
-//        backgroundImage.image = UIImage(named: "CDS2")
-//        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFit
-//        self.view.insertSubview(backgroundImage, at: 0)
-//        self.tabBarController?.tabBar.isHidden = true
-//            self.tabBarController?.tabBar.frame = .zero
+      
         Utilities.styleFilledButton(login)
         Utilities.styleHollowButton(register)
         Utilities.styleTextField(username)
         Utilities.styleTextField(password)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
         if UserDefaults.standard.bool(forKey: "Logged") == true {
              self.navigationController?.pushViewController(TabViewController(), animated: false)
         }
@@ -97,5 +96,20 @@ import UIKit
     }
     
     }
+extension LogInViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == username {
+      password.becomeFirstResponder()
+    }
 
+    if textField == password {
+      textField.resignFirstResponder()
+    }
+    return true
+  }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
 
