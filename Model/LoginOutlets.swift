@@ -51,3 +51,40 @@ class Button: UIButton {
     }
     
 }
+@IBDesignable
+class StyleTextField: UITextField{
+    @IBInspectable
+    var lineColor: UIColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1){
+        didSet{
+            bottomLine.backgroundColor = lineColor.cgColor
+        }
+    }
+    private let bottomLine: CALayer = CALayer()
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        commonInit()
+    }
+    required init?(coder: NSCoder) {
+            super.init(coder: coder)
+            commonInit()
+        }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        // needs to be set here for Storyboard / IB
+        self.borderStyle = .none
+    }
+    private func commonInit(){
+        //removew border
+        self.borderStyle = .none
+        //bottom line color
+        bottomLine.backgroundColor = lineColor.cgColor
+        //add bottom line layer
+        layer.addSublayer(bottomLine)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // update bottom line layer frame
+        bottomLine.frame = CGRect(x: 0, y: bounds.height - 2.0, width: bounds.width, height: 2.0)
+    }
+}

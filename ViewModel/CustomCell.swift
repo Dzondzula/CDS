@@ -11,17 +11,17 @@ import UIKit
 
 class CustomCell: UICollectionViewCell,UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
-    var section : Section? {
+    var section : TrainingSections? {
         didSet{
            
             guard let section = self.section else {return}
-            self.titleLabel.text = section.weekDay
+            self.titleLabel.text = section.weekDay.rawValue
             self.trainings = section.training
             self.collectionView.reloadData()
             
         }
     }
-   lazy var trainings = [Training]()
+   lazy var trainings = [TrainingInfo]()
     let collectionView : UICollectionView = {
         // init the layout
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +31,7 @@ class CustomCell: UICollectionViewCell,UICollectionViewDataSource, UICollectionV
         // the instance of collectionView
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       // cv.backgroundColor = .purple
+        cv.backgroundColor = .black
        
         // get the collection view a  backgroundColor
          
@@ -79,15 +79,12 @@ class CustomCell: UICollectionViewCell,UICollectionViewDataSource, UICollectionV
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor,constant: 8 ).isActive = true
         //titleLabel.bottomAnchor.constraint
-        
-    
-       
+      
        setupSubCells()
         collectionView.register(SubCustomCell.self, forCellWithReuseIdentifier: cellId)
         
+        
     }
-    
-   
     
     fileprivate  func setupSubCells(){
         // add collectionView to the view

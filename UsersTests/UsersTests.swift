@@ -6,27 +6,32 @@
 //
 
 import XCTest
-
+@testable import MyFirebase
+import SnapshotTesting
 class UsersTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var sut: AllUsersViewController!
+    
+    override func setUp() {
+        sut = AllUsersViewController()
+        sut.loadViewIfNeeded()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        sut = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testInitialLoginScreen(){
+        setUsers()
+        
+        assertSnapshot(matching: sut, as: .image, record: true)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    
+    func setUsers(){
+        for number in 0...5{
+            let user = UserInfo(firstName: "Nikola", lastName: "Andr", username: "lol", pictureURL: nil, training: ["mjau","idegasara"], uid: "\(number)", admin: false)
+            sut.users.append(user)
         }
+        
     }
 
 }

@@ -11,12 +11,12 @@
 import UIKit
 
 class SubCustomCell: UICollectionViewCell {
-    var training : Training? {
+    var training : TrainingInfo? {
            didSet{
               // print("Playlist 🎯",self.playlist)
             guard let training = self.training else {return}
             self.ImageView.image = UIImage(named: training.image)
-            self.TitleLabel.text = self.training?.title
+               self.TitleLabel.text = "\(training.title) \n \(training.time)"
                
            }
        }
@@ -37,6 +37,8 @@ class SubCustomCell: UICollectionViewCell {
         lb.font = UIFont.systemFont(ofSize: 14)
         lb.font = UIFont.boldSystemFont(ofSize: 14)
         lb.text = "Evening Music"
+        lb.numberOfLines = 3
+        
      
         return lb
     }()

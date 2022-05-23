@@ -21,15 +21,15 @@ class MemberTableViewCell: UITableViewCell {
             guard let trening = item.training else {return}
             trainingLabel.text = trening[0]
             
-            let child = DataObjects.infoRef.child(item.uid)//add to service
+            let child = getDataManager.userInfoRef.child(item.uid)//add to service
             let child2 = child.child("Payments")
             child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
                 if snapshot.exists(){
                 let data = snapshot.value as! Bool
                     if data == true{
-                        countryImageView.image = UIImage(named: "greenLight")
+                        paymentBulb.image = UIImage(named: "greenLight")
                     } else if data == false{
-                        countryImageView.image = UIImage(named: "redLight")
+                        paymentBulb.image = UIImage(named: "redLight")
                     }
                 }
             })
@@ -42,7 +42,7 @@ class MemberTableViewCell: UITableViewCell {
         containerView.addSubview(nameLabel)
         containerView.addSubview(trainingLabel)
         addSubview(containerView)
-        self.contentView.addSubview(countryImageView)
+        self.contentView.addSubview(paymentBulb)
         
         NSLayoutConstraint.activate([
             profileImageView.centerYAnchor.constraint(equalTo:centerYAnchor), profileImageView.leadingAnchor.constraint(equalTo:leadingAnchor, constant:10),
@@ -56,7 +56,7 @@ class MemberTableViewCell: UITableViewCell {
             trainingLabel.topAnchor.constraint(equalTo:nameLabel.bottomAnchor), trainingLabel.leadingAnchor.constraint(equalTo:containerView.leadingAnchor), trainingLabel.topAnchor.constraint(equalTo:nameLabel.bottomAnchor),
             
 
-           countryImageView.widthAnchor.constraint(equalToConstant:26), countryImageView.heightAnchor.constraint(equalToConstant:26), countryImageView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-20), countryImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor)
+           paymentBulb.widthAnchor.constraint(equalToConstant:26), paymentBulb.heightAnchor.constraint(equalToConstant:26), paymentBulb.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-20), paymentBulb.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor)
 
         ])
     }
@@ -73,7 +73,7 @@ class MemberTableViewCell: UITableViewCell {
             return img
          }()
     
-    let countryImageView:UIImageView = {
+    let paymentBulb:UIImageView = {
             let img = UIImageView()
             img.contentMode = .scaleAspectFill // without this your image will shrink and looks ugly
             img.translatesAutoresizingMaskIntoConstraints = false

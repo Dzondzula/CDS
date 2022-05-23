@@ -8,25 +8,27 @@ import Foundation
 import Firebase
 import UIKit
 
-@IBDesignable class LogInViewController: UIViewController {
+ class LogInViewController: UIViewController {
 
     var handle : AuthStateDidChangeListenerHandle?
+    
+   var indicator = UIActivityIndicatorView()
    
     @IBOutlet weak var forgot: UIButton!
     @IBOutlet weak var register: UIButton!
-    @IBOutlet weak var login: UIButton!
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var login: Button!
+    @IBOutlet weak var username: StyleTextField!
+    @IBOutlet weak var password: StyleTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
   
       
         Utilities.styleFilledButton(login)
         Utilities.styleHollowButton(register)
-        Utilities.styleTextField(username)
-        Utilities.styleTextField(password)
-        
-        self.navigationController?.isNavigationBarHidden = true
+//        Utilities.styleTextField(username)
+//        Utilities.styleTextField(password)
+       // username.backgroundColor = .darkGray
+       
         
         if UserDefaults.standard.bool(forKey: "Logged") == true {
              self.navigationController?.pushViewController(TabViewController(), animated: false)
@@ -40,7 +42,10 @@ import UIKit
         }
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //self.navigationController?.isNavigationBarHidden = true
+    }
     override func viewWillDisappear(_ animated: Bool) {
         guard let handle = handle else {
             return
@@ -53,18 +58,30 @@ import UIKit
         //performSegue(withIdentifier: "toRegister", sender: nil)
         
     }
-    @IBAction func loginTapped(_ sender: Any) {
-        
+  
+    @IBAction func loginTapped(_ sender: UIButton) {
+       
+        //login.setTitle("", for: .normal)
+//        indicator.translatesAutoresizingMaskIntoConstraints = false
+//        login.addSubview(indicator)
+//        indicator.center = CGPoint(x: login.bounds.width / 2, y: login.bounds.height / 2)
+//        indicator.color = UIColor.brown
+//        indicator.startAnimating()
         guard let username = username.text,
               let password = password.text,
               !username.isEmpty,
               !password.isEmpty
         else {return}
-
+        login.showLoading()
+        
+        
         Auth.auth().signIn(withEmail: username, password: password){ user,error in
             if let error = error, user == nil{
                 let ac = UIAlertController(title: "Sign in failed", message: error.localizedDescription, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Ok", style: .default))
+                ac.addAction(UIAlertAction(title: "Ok", style: .default){  [weak self] _ in
+                    self?.login.hideLoading()
+                    
+                })
                 self.present(ac, animated: true)
             }
         }

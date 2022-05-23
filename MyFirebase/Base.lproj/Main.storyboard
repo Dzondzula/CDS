@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ARM-re-UXf">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="uPr-zw-PV1" customClass="ForgotPasswordViewController" customModule="MyFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yQj-eB-9lF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKC-Wz-tRY">
@@ -55,40 +55,40 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="MyFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" customModule="MyFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-ig-jGX" userLabel="Stack View1">
-                                <rect key="frame" x="28" y="182" width="264" height="103"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="50" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-ig-jGX" userLabel="Stack View1">
+                                <rect key="frame" x="62" y="370.5" width="290" height="127"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-LT-FVt">
-                                        <rect key="frame" x="0.0" y="0.0" width="264" height="36.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="50" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-LT-FVt" customClass="StyleTextField" customModule="MyFirebase" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="48.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="ySc-LT-FVt" secondAttribute="height" multiplier="36:5" id="IL3-eG-qGc"/>
+                                            <constraint firstAttribute="width" secondItem="ySc-LT-FVt" secondAttribute="height" multiplier="6:1" id="Pq5-Bq-42o"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAs-gO-lO6">
-                                        <rect key="frame" x="0.0" y="66.5" width="264" height="36.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAs-gO-lO6" customClass="StyleTextField" customModule="MyFirebase" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="78.5" width="290" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CDS2" translatesAutoresizingMaskIntoConstraints="NO" id="NHt-ym-s1s">
-                                <rect key="frame" x="82" y="44" width="156" height="130"/>
+                                <rect key="frame" x="61.5" y="88" width="291" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NHt-ym-s1s" secondAttribute="height" multiplier="1:1" constant="26" id="iD3-tl-Fs5"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-Qo-1Px" userLabel="Stack View2">
-                                <rect key="frame" x="54.5" y="277" width="211" height="193"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-Qo-1Px" userLabel="Stack View2">
+                                <rect key="frame" x="122.5" y="659" width="169" height="193"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54Z-Jk-46X">
-                                        <rect key="frame" x="21" y="0.0" width="169" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54Z-Jk-46X" customClass="Button" customModule="MyFirebase" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="169" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="u3r-cT-8yK"/>
                                         </constraints>
@@ -99,17 +99,21 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tL2-wG-boq">
-                                        <rect key="frame" x="32" y="80" width="147" height="45"/>
+                                        <rect key="frame" x="11" y="80" width="147" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                         <connections>
                                             <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xYQ-mI-ayz"/>
+                                            <segue destination="cV5-NM-7NT" kind="show" identifier="toRegister" id="R9B-hA-Cmw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9Z-8a-sEP">
-                                        <rect key="frame" x="39.5" y="155" width="132.5" height="38"/>
+                                        <rect key="frame" x="18.5" y="155" width="132.5" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot password"/>
+                                        <connections>
+                                            <segue destination="uPr-zw-PV1" kind="show" id="ZaD-mW-Jdt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -124,13 +128,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NHt-ym-s1s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1q1-gl-6cz"/>
-                            <constraint firstItem="yuG-Qo-1Px" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="197:448" id="37X-2o-L8A"/>
                             <constraint firstItem="NHt-ym-s1s" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="291:896" id="5dt-5X-cV9"/>
                             <constraint firstItem="NHt-ym-s1s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5jE-1x-t5t"/>
-                            <constraint firstItem="Mwn-ig-jGX" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="JAD-kb-Jlm"/>
+                            <constraint firstItem="Mwn-ig-jGX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="150:463" id="Fus-QC-FaZ"/>
+                            <constraint firstItem="Mwn-ig-jGX" firstAttribute="top" secondItem="NHt-ym-s1s" secondAttribute="bottom" constant="17.666666666666629" id="Lyn-1h-9HU"/>
+                            <constraint firstItem="Mwn-ig-jGX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="S1w-fB-goC"/>
                             <constraint firstItem="yuG-Qo-1Px" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VDa-nD-rBp"/>
-                            <constraint firstItem="Mwn-ig-jGX" firstAttribute="top" secondItem="NHt-ym-s1s" secondAttribute="bottom" constant="8" symbolic="YES" id="gEU-iL-2q0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Mwn-ig-jGX" secondAttribute="trailing" constant="28" id="mtJ-Bw-fSB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yuG-Qo-1Px" secondAttribute="bottom" constant="10" id="sW7-bY-4On"/>
                         </constraints>
                     </view>
@@ -152,41 +155,41 @@
             <objects>
                 <viewController id="cV5-NM-7NT" customClass="RegisterViewController" customModule="MyFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gMJ-tr-aSm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="28j-G5-C20">
-                                <rect key="frame" x="40" y="100" width="240" height="425"/>
+                                <rect key="frame" x="38.5" y="188" width="337" height="415.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J2o-7N-Oir">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="337" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="df2-gU-u8A">
-                                        <rect key="frame" x="0.0" y="75" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="73.5" width="337" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qGk-L3-Jqd">
-                                        <rect key="frame" x="0.0" y="150" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="147" width="337" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QdG-3y-Z93">
-                                        <rect key="frame" x="0.0" y="225" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="220" width="337" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Gd-d2-cJg">
-                                        <rect key="frame" x="0.0" y="300" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="293.5" width="337" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrA-D8-cgC">
-                                        <rect key="frame" x="0.0" y="375" width="240" height="50"/>
+                                        <rect key="frame" x="0.0" y="367" width="337" height="48.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7C6-Je-g02"/>
+                                            <constraint firstAttribute="width" secondItem="LrA-D8-cgC" secondAttribute="height" multiplier="174:25" id="Q1m-3E-RGO"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register"/>
@@ -207,9 +210,9 @@
                         <viewLayoutGuide key="safeArea" id="uaZ-LV-x75"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uaZ-LV-x75" firstAttribute="trailing" secondItem="28j-G5-C20" secondAttribute="trailing" constant="40" id="fbC-bh-Yj7"/>
+                            <constraint firstItem="28j-G5-C20" firstAttribute="width" secondItem="gMJ-tr-aSm" secondAttribute="height" multiplier="174:463" id="BVW-CN-m96"/>
+                            <constraint firstItem="28j-G5-C20" firstAttribute="centerX" secondItem="uaZ-LV-x75" secondAttribute="centerX" id="KCY-1S-3qc"/>
                             <constraint firstItem="28j-G5-C20" firstAttribute="top" secondItem="uaZ-LV-x75" secondAttribute="top" constant="100" id="rt4-Jd-Eps"/>
-                            <constraint firstItem="28j-G5-C20" firstAttribute="leading" secondItem="uaZ-LV-x75" secondAttribute="leading" constant="40" id="wGI-97-sTz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mka-Tq-9fh"/>
@@ -231,7 +234,7 @@
                 <navigationController storyboardIdentifier="NavController" automaticallyAdjustsScrollViewInsets="NO" id="ARM-re-UXf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TkH-Kk-EGf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -244,6 +247,14 @@
             <point key="canvasLocation" x="1728.985507246377" y="65.625"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vAs-gO-lO6">
+            <size key="intrinsicContentSize" width="90.5" height="34"/>
+        </designable>
+        <designable name="ySc-LT-FVt">
+            <size key="intrinsicContentSize" width="300" height="50"/>
+        </designable>
+    </designables>
     <resources>
         <image name="CDS2" width="291" height="241.5"/>
         <systemColor name="systemBackgroundColor">

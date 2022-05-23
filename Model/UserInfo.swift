@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 
-
-
 struct UserInfo{
     let ref: DatabaseReference?
     let key: String
@@ -47,7 +45,7 @@ struct UserInfo{
                 
         else {return nil}
     
-        self.ref = snapshot.ref
+        self.ref = nil
         self.key = snapshot.key
         self.firstName = firstName
         self.lastName = lastName
