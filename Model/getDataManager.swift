@@ -7,11 +7,11 @@
 import Firebase
 import UIKit
 
-class DataObjects {
+class getDataManager {
 
   static  let rootRef = Database.database(url: "https://myfirebase-ee73a-default-rtdb.europe-west1.firebasedatabase.app").reference()
-    static let infoRef = rootRef.child("user-informations")
-    
+    static let userInfoRef = rootRef.child("user-informations")
+    static let trainingScheduleRef = rootRef.child("training-schedule")
     
     
     static var infoRefObservers:[DatabaseHandle] = []
