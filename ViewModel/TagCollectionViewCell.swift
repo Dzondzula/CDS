@@ -7,7 +7,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         
-        contentView.layer.cornerRadius = 12.0
+        contentView.layer.cornerRadius = 18.0
         contentView.layer.masksToBounds = true
         sportLabel.clipsToBounds = true
         

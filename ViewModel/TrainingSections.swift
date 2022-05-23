@@ -1,17 +1,20 @@
-//
-//  Section.swift
-//  spotifyAutoLayout
-//
-//  Created by admin on 12/6/19.
-//  Copyright © 2019 Said Hayani. All rights reserved.
-//
+
 
 import Foundation
 struct TrainingSections:Codable {
-    var weekDay : String
-    var training : [Training]
+    var weekDay : WeekDay
+    var training : [TrainingInfo]
 }
-struct Training:Codable {
+enum WeekDay: String,Codable{
+    case Monday = "Monday"
+    case Tuesday = "Tuesday"
+    case Wednesday = "Wednesday"
+    case Thursday = "Thursday"
+    case  Friday = "Friday"
+    
+ 
+}
+struct TrainingInfo:Codable {
     init(title: String, image: String, time: String) {
         self.title = title
         self.image = image
@@ -36,11 +39,11 @@ struct Training:Codable {
 class TrainingAPI {
     static func getTraining() -> [TrainingSections]{
         let trainings = [
-            TrainingSections(weekDay: "Monday", training: []),
-            TrainingSections(weekDay: "Tuesday", training: []),
-            TrainingSections(weekDay: "Wednesday", training: []),
-            TrainingSections(weekDay: "Thursday", training: []),
-            TrainingSections(weekDay: "Friday", training: []),
+            TrainingSections(weekDay: .Monday, training: []),
+            TrainingSections(weekDay: .Tuesday, training: []),
+            TrainingSections(weekDay: .Wednesday, training: []),
+            TrainingSections(weekDay: .Thursday, training: []),
+            TrainingSections(weekDay: .Friday, training: []),
         ]
         return trainings
     }

@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
             if error == nil {
                 Auth.auth().signIn(withEmail: email, password: password){result,_ in
                     let uid = Auth.auth().currentUser?.uid
-                    let ref = DataObjects.infoRef.child(uid!)
+                    let ref = getDataManager.userInfoRef.child(uid!)
                     ref.setValue(["uid":uid!,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username,"isAdmin":admin])
                     UserDefaults.standard.set(true, forKey: "Logged")
                     self.navigationController?.pushViewController(TabViewController(), animated: true)

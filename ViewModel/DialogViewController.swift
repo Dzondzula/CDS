@@ -131,14 +131,26 @@ open class DialogViewController: UIViewController {
         toolbar.barStyle = .default
         toolbar.sizeToFit()
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneTapped))
-        toolbar.setItems([doneBtn], animated: true)
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelTapped))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([doneBtn,flexible,cancelBtn], animated: true)
         time.placeholder = "Choose time"
         time.layer.cornerRadius = 10
         picker.translatesAutoresizingMaskIntoConstraints = false
+        //view.addSubview(picker)
+//        let constraints = [
+//           //picker.heightAnchor.constraint(equalToConstant: 32.0),
+//            picker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
+//            picker.topAnchor.constraint(equalTo: dialogView.bottomAnchor, constant: 8.0),
+//           picker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0)
+//        ]
+        //NSLayoutConstraint.activate(constraints)
+        
         picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         picker.datePickerMode = .time
-        //picker.preferredDatePickerStyle = .wheels
         
+        picker.contentHorizontalAlignment = .center
+        picker.contentVerticalAlignment = .center
         time.inputAccessoryView = toolbar
         time.inputView = picker
         time.textAlignment = .center
@@ -236,7 +248,7 @@ open class DialogViewController: UIViewController {
     
     @objc func trainingAdded(_ sender: UIButton){
         
-        dropDown.dataSource = ["image1","image2"]
+        dropDown.dataSource = ["KMG","Wrestling","Bjj","KickBox","MMA","Box"]
         dropDown.anchorView = sender
         dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
             dropDown.show() //7
@@ -252,6 +264,9 @@ open class DialogViewController: UIViewController {
         formatter.dateFormat = "HH:mm"
         time.text = formatter.string(from: picker.date)
         time.textColor = .link
+        self.view.endEditing(true)
+    }
+    @objc func cancelTapped(){
         self.view.endEditing(true)
     }
 }

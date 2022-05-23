@@ -23,7 +23,7 @@ class TabViewController: UITabBarController {
 //        handle = Auth.auth().addStateDidChangeListener{error,user in
 //            if user != nil{
         let uid = Auth.auth().currentUser?.uid
-        let child = DataObjects.infoRef.child(uid!)//add to service
+        let child = getDataManager.userInfoRef.child(uid!)//add to service
         child.child("isAdmin").observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? Bool
