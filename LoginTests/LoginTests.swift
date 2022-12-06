@@ -21,6 +21,10 @@ class LoginTests: XCTestCase {
         sut = nil
     }
     
+    func testLoginVC(){
+        _ = LogInViewController.instantiate()
+    }
+    
     func testInitialLoginScreen(){
         tap(sut.login)
         

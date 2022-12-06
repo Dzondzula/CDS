@@ -12,6 +12,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
     
     
     let cellId : String = "cellId"
+    var sec = TrainingSections.getTraining()
     var sections = TrainingAPI.getTraining()
     var dialogViewController: DialogViewController!
     var informations: [TrainingSections] = []
@@ -19,6 +20,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
     
     func onCheckboxPickerValueChanged(_ trainingType: String, _ time: String){
         let chooseDay = UIAlertController(title: "Add training", message: "Choose day", preferredStyle: .actionSheet)
+        
         for (index, weekdays) in sections.enumerated(){
             chooseDay.addAction(UIAlertAction(title: weekdays.weekDay.rawValue, style: .default){[weak self]_ in
                 guard let self = self else {return}
@@ -125,6 +127,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
         //                layout.minimumLineSpacing = 5.0
         //        layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40)/3, height: ((UIScreen.main.bounds.size.width - 40)/3))
         collectionView!.collectionViewLayout = layout
+        
         fetch{ result in
             switch result{
             case .failure(let error):

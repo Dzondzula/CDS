@@ -3,7 +3,7 @@
 //  MyFirebase
 //
 //  Created by Nikola Andrijasevic on 8.1.22..
-//
+//picker
 import SwiftCheckboxDialog
 import FirebaseStorage
 import Firebase
@@ -17,7 +17,7 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
     //    var handle: AuthStateDidChangeListenerHandle?
     //
     //    var refObserver:[DatabaseHandle] = []
-    
+    weak var coordinator : AdminMembersCoordinator?
     var arr : [String] = []
     var detailItem : UserInfo?
     var checkboxDialogViewController: CheckboxDialogViewController!
@@ -423,7 +423,7 @@ extension MemberViewController {
         child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
             if snapshot.exists(){
                 let data = snapshot.value as! Bool
-                var changed = !data
+                let changed = !data
                 
                 if changed == true{
                     //paymentStatusLabel.text = "Active until: \(endString)"

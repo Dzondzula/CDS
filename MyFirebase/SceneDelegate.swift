@@ -10,12 +10,18 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    var coordinator: MainCoordinator!
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: UIScreen.main.bounds)
+               window?.windowScene = windowScene
         
+        coordinator = MainCoordinator(window: window!)
+        coordinator.start()
+        window?.makeKeyAndVisible()
+        //The navigation controller of the application coordinator is the root view controller of the application window, but the navigation controller doesn't have a root view controller it can display
+        //The quotes view controller in the main storyboard is no longer tightly coupled to a navigation controller. This increases the reusability of the ViewController classes.
       
     }
 

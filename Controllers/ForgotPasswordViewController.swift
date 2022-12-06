@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController,Storyboarded {
 
     @IBOutlet weak var emailText: UITextField!
     

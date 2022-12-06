@@ -62,13 +62,13 @@ class SubCustomCell: UICollectionViewCell {
             ImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
             ImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
             ImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-            ImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+           // ImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
             ImageView.bottomAnchor.constraint(equalTo: TitleLabel.topAnchor,constant: -15).isActive = true
             
            
            
             TitleLabel.translatesAutoresizingMaskIntoConstraints = false
-            TitleLabel.topAnchor.constraint(equalTo: ImageView.bottomAnchor,constant: 20).isActive = true
+            TitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor,constant: 20).isActive = true
             TitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
             TitleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
             

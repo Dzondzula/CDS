@@ -4,6 +4,17 @@ import Foundation
 struct TrainingSections:Codable {
     var weekDay : WeekDay
     var training : [TrainingInfo]
+    
+    static func getTraining() -> [TrainingSections]{
+        let trainings = [
+            TrainingSections(weekDay: .Monday, training: []),
+            TrainingSections(weekDay: .Tuesday, training: []),
+            TrainingSections(weekDay: .Wednesday, training: []),
+            TrainingSections(weekDay: .Thursday, training: []),
+            TrainingSections(weekDay: .Friday, training: []),
+        ]
+        return trainings
+    }
 }
 enum WeekDay: String,Codable{
     case Monday = "Monday"

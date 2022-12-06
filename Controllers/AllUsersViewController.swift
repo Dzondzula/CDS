@@ -12,7 +12,8 @@ class AllUsersViewController: UIViewController {
     
     var users : [UserInfo] = []
     var user: User!
-    
+    var didSendEvent : (() -> Void)!
+    weak var coordinator: AdminMembersCoordinator?
     lazy var tableView: UITableView = {
         let table = UITableView()
         
@@ -25,16 +26,19 @@ class AllUsersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
         
-        self.tabBarController!.navigationItem.rightBarButtonItems = [signOutButton]
-        self.navigationController?.hidesBarsOnSwipe = false
+       // self.tabBarController!.navigationItem.rightBarButtonItems = [signOutButton]
+        //self.navigationController?.hidesBarsOnSwipe = false
         
     }
-    
+    deinit{
+    print("DEINITIALIZED ALLUSERS")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target:self, action: #selector(signOutTapped))
+        self.navigationItem.rightBarButtonItem = signOutButton
+    
         view.backgroundColor = .white
         
         view.addSubview(tableView)//Put in extension
@@ -91,6 +95,25 @@ class AllUsersViewController: UIViewController {
         })
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //coordinator?.signOutTapped()
+        //coordinator?.removeCoordinator()
+        self.dismiss(animated: true)
+       // coordinator?.parentCoordinator?.endTabCoordinator()
+        if let nav = coordinator?.navController{
+            nav.viewControllers.removeAll()
+            let isPopping = !nav.viewControllers.contains(self)
+            if isPopping{
+                print("Popped out")
+                print(nav.viewControllers.count)
+            } else{
+                print("not popped")
+                print("\(nav.viewControllers.description.description)")
+            }
+        }
+        
+    }
     func fetch(){
         //      let completed =
         getDataManager.userInfoRef.observe(.value){ snapshot,error in
@@ -126,7 +149,7 @@ class AllUsersViewController: UIViewController {
         case noDataAvailable
         case canNotProcessData
     }
-    @objc func signOutTapped(){
+    @objc private func signOutTapped(){
         
         //        guard let user = Auth.auth().currentUser else {return}
         //        let onlineRef = DataObjects.rootRef.child("online/\(user.uid)")
@@ -138,7 +161,9 @@ class AllUsersViewController: UIViewController {
         
         do{
             try Auth.auth().signOut()
-            self.navigationController?.popToRootViewController(animated: true)
+            didSendEvent()
+            coordinator?.parentCoordinator?.finish()
+            //self.navigationController?.popToRootViewController(animated: true)
             
             resetDefaults()
         } catch  {
@@ -173,8 +198,9 @@ extension AllUsersViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MemberViewController()
         vc.detailItem = users[indexPath.row]
-        let navVC = UINavigationController(rootViewController: vc)
-        present(navVC,animated: true)
+        coordinator?.showMember(users[indexPath.row])
+//        let navVC = UINavigationController(rootViewController: vc)
+        //present(vc,animated: true)
         
     }
     

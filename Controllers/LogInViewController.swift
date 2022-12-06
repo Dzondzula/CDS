@@ -8,14 +8,15 @@ import Foundation
 import Firebase
 import UIKit
 
- class LogInViewController: UIViewController {
+ class LogInViewController: UIViewController,Storyboarded {
 
     var handle : AuthStateDidChangeListenerHandle?
-    
+     var didSendEvent: (()-> Void)!
+   weak var coordinator: LoginCoordinator?
    var indicator = UIActivityIndicatorView()
    
     @IBOutlet weak var forgot: UIButton!
-    @IBOutlet weak var register: UIButton!
+    @IBOutlet weak var register: Button!
     @IBOutlet weak var login: Button!
     @IBOutlet weak var username: StyleTextField!
     @IBOutlet weak var password: StyleTextField!
@@ -30,16 +31,16 @@ import UIKit
        // username.backgroundColor = .darkGray
        
         
-        if UserDefaults.standard.bool(forKey: "Logged") == true {
-             self.navigationController?.pushViewController(TabViewController(), animated: false)
-        }
+//        if UserDefaults.standard.bool(forKey: "Logged") == true {
+//             self.navigationController?.pushViewController(TabViewController(), animated: false)
+//        }
 //         else if  UserDefaults.standard.bool(forKey: "UserLogged") == true {
 //
 //                self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
 //
-         else {
-            return
-        }
+//         else {
+//            return
+//        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +52,12 @@ import UIKit
             return
         }
         Auth.auth().removeStateDidChangeListener(handle)
+        coordinator?.finished()
     }
 
     @IBAction func registerTapped(_ sender: Any) {
         
-        //performSegue(withIdentifier: "toRegister", sender: nil)
+        coordinator?.showRegister()
         
     }
   
@@ -103,11 +105,13 @@ import UIKit
 //                        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
 //                    }
 //                })
-                self.navigationController?.pushViewController(TabViewController(), animated: true)
+                self.login.hideLoading()
+                self.didSendEvent()
                 self.password.text = nil
                 
             } else {
                 print("you dont have that user")
+                self.login.hideLoading()
             }
     }
     }

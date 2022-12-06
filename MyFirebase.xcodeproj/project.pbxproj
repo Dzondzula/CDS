@@ -29,6 +29,15 @@
 		C16DFC762789DFAF00E7AAB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16DFC742789DFAF00E7AAB5 /* LaunchScreen.storyboard */; };
 		C16DFC7E2789EEED00E7AAB5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DFC7D2789EEED00E7AAB5 /* RegisterViewController.swift */; };
 		C16DFC7F2789F58400E7AAB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16DFC6F2789DFAE00E7AAB5 /* Main.storyboard */; };
+		C17B54AB284E46CD007FC6A6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54AA284E46CD007FC6A6 /* MainCoordinator.swift */; };
+		C17B54AD284E5CD8007FC6A6 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54AC284E5CD8007FC6A6 /* Storyboarded.swift */; };
+		C17B54B328515587007FC6A6 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54B228515587007FC6A6 /* TabCoordinator.swift */; };
+		C17B54B52851576B007FC6A6 /* AdminMembersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54B42851576B007FC6A6 /* AdminMembersCoordinator.swift */; };
+		C17B54B72851578A007FC6A6 /* TrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54B62851578A007FC6A6 /* TrainingCoordinator.swift */; };
+		C17B54B9285258D2007FC6A6 /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54B8285258D2007FC6A6 /* UserCoordinator.swift */; };
+		C17B54BB28525D9B007FC6A6 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54BA28525D9B007FC6A6 /* LoginCoordinator.swift */; };
+		C17B54BD2853C0DE007FC6A6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54BC2853C0DE007FC6A6 /* Coordinator.swift */; };
+		C17B54C3285B48F5007FC6A6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54C2285B48F4007FC6A6 /* Router.swift */; };
 		C18D20EA27959C8C00C93654 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20E927959C8C00C93654 /* TagCollectionViewCell.swift */; };
 		C18D20EC27959CF700C93654 /* TagCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20EB27959CF700C93654 /* TagCollectionReusableView.swift */; };
 		C18D20EE27959FB900C93654 /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20ED27959FB900C93654 /* TagFlowLayout.swift */; };
@@ -90,6 +99,15 @@
 		C16DFC752789DFAF00E7AAB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C16DFC772789DFAF00E7AAB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C16DFC7D2789EEED00E7AAB5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C17B54AA284E46CD007FC6A6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		C17B54AC284E5CD8007FC6A6 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		C17B54B228515587007FC6A6 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
+		C17B54B42851576B007FC6A6 /* AdminMembersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMembersCoordinator.swift; sourceTree = "<group>"; };
+		C17B54B62851578A007FC6A6 /* TrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCoordinator.swift; sourceTree = "<group>"; };
+		C17B54B8285258D2007FC6A6 /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		C17B54BA28525D9B007FC6A6 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		C17B54BC2853C0DE007FC6A6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C17B54C2285B48F4007FC6A6 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C18D20E927959C8C00C93654 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		C18D20EB27959CF700C93654 /* TagCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionReusableView.swift; sourceTree = "<group>"; };
 		C18D20ED27959FB900C93654 /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
@@ -196,9 +214,11 @@
 			isa = PBXGroup;
 			children = (
 				C10E3167278A3F910005E19C /* GoogleService-Info.plist */,
+				C17B54A9284E45B9007FC6A6 /* Coordinators */,
 				C10E3164278A0E610005E19C /* Controllers */,
 				C10E3162278A0E130005E19C /* Model */,
 				C115B8A227905096006388DD /* ViewModel */,
+				C17B54C1285B48F4007FC6A6 /* Router */,
 				C16DFC682789DFAD00E7AAB5 /* MyFirebase */,
 				C143337B280D991E001A1DB2 /* LoginTests */,
 				C1A38DB8282153910037A1D5 /* UsersTests */,
@@ -230,6 +250,29 @@
 				C1A245FC2821638600BB6004 /* main.swift */,
 			);
 			path = MyFirebase;
+			sourceTree = "<group>";
+		};
+		C17B54A9284E45B9007FC6A6 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C17B54AA284E46CD007FC6A6 /* MainCoordinator.swift */,
+				C17B54AC284E5CD8007FC6A6 /* Storyboarded.swift */,
+				C17B54B228515587007FC6A6 /* TabCoordinator.swift */,
+				C17B54B42851576B007FC6A6 /* AdminMembersCoordinator.swift */,
+				C17B54B62851578A007FC6A6 /* TrainingCoordinator.swift */,
+				C17B54B8285258D2007FC6A6 /* UserCoordinator.swift */,
+				C17B54BA28525D9B007FC6A6 /* LoginCoordinator.swift */,
+				C17B54BC2853C0DE007FC6A6 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		C17B54C1285B48F4007FC6A6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				C17B54C2285B48F4007FC6A6 /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		C1A38DB8282153910037A1D5 /* UsersTests */ = {
@@ -536,20 +579,29 @@
 				C1A245FD2821638600BB6004 /* main.swift in Sources */,
 				C107665927A309A7006FE78D /* Utilities.swift in Sources */,
 				C16DFC6E2789DFAE00E7AAB5 /* LogInViewController.swift in Sources */,
+				C17B54AD284E5CD8007FC6A6 /* Storyboarded.swift in Sources */,
 				C147928E2799DD540030D2A7 /* MemberViewController.swift in Sources */,
 				C16DFC6A2789DFAE00E7AAB5 /* AppDelegate.swift in Sources */,
 				C1D26174279E0AC4005BEB4F /* SubCustomCell.swift in Sources */,
+				C17B54B9285258D2007FC6A6 /* UserCoordinator.swift in Sources */,
 				C1D26178279E0AD8005BEB4F /* DialogViewController.swift in Sources */,
 				C10E3166278A3F690005E19C /* UserProfileViewController.swift in Sources */,
 				C143338628105B14001A1DB2 /* LoginOutlets.swift in Sources */,
 				C1D26172279E0ABC005BEB4F /* CustomCell.swift in Sources */,
 				C16DFC6C2789DFAE00E7AAB5 /* SceneDelegate.swift in Sources */,
+				C17B54BB28525D9B007FC6A6 /* LoginCoordinator.swift in Sources */,
+				C17B54BD2853C0DE007FC6A6 /* Coordinator.swift in Sources */,
+				C17B54B52851576B007FC6A6 /* AdminMembersCoordinator.swift in Sources */,
+				C17B54AB284E46CD007FC6A6 /* MainCoordinator.swift in Sources */,
 				C1D2617A279E0B99005BEB4F /* TrainingViewController.swift in Sources */,
 				C1D26176279E0ACD005BEB4F /* TrainingSections.swift in Sources */,
 				C13F8E4B279EF54100F1396B /* TabViewController.swift in Sources */,
+				C17B54C3285B48F5007FC6A6 /* Router.swift in Sources */,
 				C115B8A12790479E006388DD /* AllUsersViewController.swift in Sources */,
 				C15CAE1B278FA1220008C889 /* ForgotPasswordViewController.swift in Sources */,
 				C10E315F278A0A700005E19C /* User.swift in Sources */,
+				C17B54B72851578A007FC6A6 /* TrainingCoordinator.swift in Sources */,
+				C17B54B328515587007FC6A6 /* TabCoordinator.swift in Sources */,
 				C115B8A4279050E6006388DD /* MemberTableViewCell.swift in Sources */,
 				C18D20EE27959FB900C93654 /* TagFlowLayout.swift in Sources */,
 				C18D20EA27959C8C00C93654 /* TagCollectionViewCell.swift in Sources */,
@@ -787,9 +839,11 @@
 				DEVELOPMENT_TEAM = 6Y4YSK5BF4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyFirebase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow app to use camera";
+				INFOPLIST_KEY_NSMainNibFile = Main;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow app to upload photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -818,9 +872,11 @@
 				DEVELOPMENT_TEAM = 6Y4YSK5BF4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyFirebase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow app to use camera";
+				INFOPLIST_KEY_NSMainNibFile = Main;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow app to upload photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
