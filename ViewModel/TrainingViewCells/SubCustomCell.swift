@@ -1,10 +1,4 @@
-//
-//  SubCustomCell.swift
-//  spotifyAutoLayout
-//
-//  Created by admin on 12/3/19.
-//  Copyright © 2019 Said Hayani. All rights reserved.
-//
+
 
 
 

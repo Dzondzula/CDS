@@ -7,6 +7,7 @@
 import Firebase
 import UIKit
 
+
 class RegisterViewController: UIViewController,Storyboarded {
 
     @IBOutlet weak var passwordText: UITextField!
@@ -14,8 +15,10 @@ class RegisterViewController: UIViewController,Storyboarded {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var firstName: UITextField!
-    
+    var dataManager : DataManager!
     weak var coordinator: LoginCoordinator?
+    
+    
             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,7 @@ class RegisterViewController: UIViewController,Storyboarded {
             if error == nil {
                 Auth.auth().signIn(withEmail: email, password: password){result,_ in
                     let uid = Auth.auth().currentUser?.uid
-                    let ref = getDataManager.userInfoRef.child(uid!)
+                    let ref = self.dataManager.userInfoRef.child(uid!)
                     ref.setValue(["uid":uid!,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username,"isAdmin":admin])
                     UserDefaults.standard.set(true, forKey: "Logged")
 //                    self.navigationController?.pushViewController(TabViewController(), animated: true)

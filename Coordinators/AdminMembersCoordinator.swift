@@ -18,24 +18,31 @@ class AdminMembersCoordinator: NSObject,Coordinator,UINavigationControllerDelega
     var type: CoordinatorType {.member}
     
     var finishDelegate: CoordinatorFinishDelegate?
-    
     weak var parentCoordinator: Coordinator?
     var navController: UINavigationController
     var childCoordinators:[Coordinator] = []
     
-    init(navigationController: UINavigationController){
+    
+    private var dataManager : DataManager
+    init(navigationController: UINavigationController,dataManager: DataManager){
         self.navController = navigationController
+        self.dataManager = dataManager
     }
 
     func start(){
-        let allUsersVC = AllUsersViewController()
+        
+        let allUsersVC = AdminMemebersViewController()
+        allUsersVC.dataManager = dataManager
         navController.delegate = self
         allUsersVC.coordinator = self
         allUsersVC.title = "Members"
-        allUsersVC.didSendEvent = { [weak self] in
-            self?.finish()
+        allUsersVC.didSendSingOutEvent = { [weak self] in
+            guard let self = self else {return}
+            self.parentCoordinator?.finish()
         }
+      
         navController.setViewControllers([allUsersVC], animated: true)
+        
         
     }
     
@@ -52,9 +59,12 @@ class AdminMembersCoordinator: NSObject,Coordinator,UINavigationControllerDelega
 
     func showMember(_ member: UserInfo){
         let memberVC = MemberViewController()
+        
+        memberVC.dataManager = dataManager
         memberVC.coordinator = self
         memberVC.detailItem = member
-        navController.pushViewController(memberVC, animated: true)
+        
+        navController.present(memberVC, animated: true)
         
     }
   func signOutTapped(){
@@ -71,4 +81,7 @@ class AdminMembersCoordinator: NSObject,Coordinator,UINavigationControllerDelega
 //        parentCoordinator?.childDidFinish(self)
 //        parentCoordinator?.endTabCoordinator()
 //    }
+    
 }
+
+

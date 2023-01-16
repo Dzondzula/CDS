@@ -13,7 +13,7 @@ class ForgotPasswordViewController: UIViewController,Storyboarded {
     
     @IBAction func sendButton(_ sender: Any) {
 
-        navigationController?.pushViewController(AllUsersViewController(), animated: true)
+        navigationController?.pushViewController(AdminMemebersViewController(), animated: true)
         //        let auth = Auth.auth()
 //
 //                auth.sendPasswordReset(withEmail: emailText.text!) { (error) in

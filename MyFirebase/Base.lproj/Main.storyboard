@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKC-Wz-tRY">
-                                <rect key="frame" x="106" y="121" width="202" height="40"/>
+                                <rect key="frame" x="106" y="125" width="202" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39.999999999999773" id="DiC-p1-0AB"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mE-ye-hKu">
-                                <rect key="frame" x="179" y="432" width="56" height="32"/>
+                                <rect key="frame" x="176.5" y="432" width="61.5" height="32"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="send"/>
                                 <connections>
@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="50" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-ig-jGX" userLabel="Stack View1">
-                                <rect key="frame" x="62" y="326.5" width="290" height="127"/>
+                                <rect key="frame" x="62" y="330.5" width="290" height="127"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="50" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-LT-FVt" customClass="StyleTextField" customModule="MyFirebase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="48.5"/>
@@ -90,16 +90,16 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CDS2" translatesAutoresizingMaskIntoConstraints="NO" id="NHt-ym-s1s">
-                                <rect key="frame" x="61.5" y="44" width="291" height="265"/>
+                                <rect key="frame" x="61.5" y="48" width="291" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NHt-ym-s1s" secondAttribute="height" multiplier="1:1" constant="26" id="iD3-tl-Fs5"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-Qo-1Px" userLabel="Stack View2">
-                                <rect key="frame" x="122.5" y="659" width="169" height="193"/>
+                                <rect key="frame" x="110" y="659" width="194" height="193"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54Z-Jk-46X" customClass="Button" customModule="MyFirebase" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="169" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="194" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="u3r-cT-8yK"/>
                                         </constraints>
@@ -110,7 +110,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tL2-wG-boq" customClass="Button" customModule="MyFirebase" customModuleProvider="target">
-                                        <rect key="frame" x="11" y="80" width="147" height="45"/>
+                                        <rect key="frame" x="12.5" y="80" width="169" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                         <connections>
@@ -118,7 +118,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9Z-8a-sEP">
-                                        <rect key="frame" x="18.5" y="155" width="132.5" height="38"/>
+                                        <rect key="frame" x="21" y="155" width="152" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot password"/>
                                     </button>
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="28j-G5-C20">
-                                <rect key="frame" x="38.5" y="144" width="337" height="415.5"/>
+                                <rect key="frame" x="38.5" y="148" width="337" height="415.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J2o-7N-Oir">
                                         <rect key="frame" x="0.0" y="0.0" width="337" height="48.5"/>
@@ -236,7 +236,7 @@
     </scenes>
     <designables>
         <designable name="vAs-gO-lO6">
-            <size key="intrinsicContentSize" width="90.5" height="34"/>
+            <size key="intrinsicContentSize" width="62.5" height="17"/>
         </designable>
         <designable name="ySc-LT-FVt">
             <size key="intrinsicContentSize" width="300" height="50"/>

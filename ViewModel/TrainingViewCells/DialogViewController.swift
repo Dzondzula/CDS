@@ -148,6 +148,7 @@ open class DialogViewController: UIViewController {
         
         picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         picker.datePickerMode = .time
+    
         
         picker.contentHorizontalAlignment = .center
         picker.contentVerticalAlignment = .center

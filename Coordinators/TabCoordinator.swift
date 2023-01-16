@@ -6,111 +6,185 @@
 //
 import Firebase
 import UIKit
+enum TabBarPage{
+    case member
+    case user
+    case training
 
-class TabCoordinator: NSObject,Coordinator,UITabBarControllerDelegate {
+    
+    
+    init?(index: Int,isAdmin: Bool) {
+        switch index {
+        case 0:
+            self = isAdmin ? .member  : .user
+        case 1:
+            self = .training
+        default:
+            return nil
+        }
+    }
+    
+    func pageTitleValue() -> String {
+        switch self {
+        case .member:
+            return  "Members"
+        case .user:
+            return "User"
+        case .training:
+            return "Training"
+        }
+    }
+
+    func pageOrderNumber() -> Int {
+        switch self {
+        case .user,.member:
+            return 0
+        case .training:
+            return 1
+        
+        }
+    }
+
+    func pageIcon() -> UIImage {
+        switch self {
+        case .member:
+            return  (UIImage(named: "group")?.resize(28.0, 28.0))!
+        case .user:
+            return (UIImage(named: "user")?.resize(28.0, 28.0))!
+        case .training:
+            return (UIImage(named: "event")?.resize(28.0, 28.0))!
+        }
+    }
+
+    
+    // Add tab icon selected / deselected color
+    
+    // etc
+}
+class TabCoordinator: NSObject,Coordinator{
     var navController: UINavigationController
     
     var type: CoordinatorType {.tab}
+    var tabViewControllers : [UIViewController] = []
     
-    
-   weak var finishDelegate: CoordinatorFinishDelegate?
+    weak var finishDelegate: CoordinatorFinishDelegate?
     weak var parentCoordinator: Coordinator?
     var tabBarController: UITabBarController
     var childCoordinators: [Coordinator] = []
-    
-    var allUsersCoordinator : AdminMembersCoordinator
-    var trainingCoordinator: TrainingCoordinator
-    var userCoordinator: UserCoordinator
+    var dataManager : DataManager
      
-    init(tabBarController: UITabBarController,navController: UINavigationController){
+    init(tabBarController: UITabBarController,navController: UINavigationController,dataManager : DataManager){
         self.tabBarController = tabBarController
         self.navController = navController
-        allUsersCoordinator = AdminMembersCoordinator(navigationController: UINavigationController())
-        trainingCoordinator = TrainingCoordinator(navigationController: UINavigationController())
-        userCoordinator = UserCoordinator(navigationController: UINavigationController())
+        self.dataManager = dataManager
+        
         super.init()
     }
     
     func start(){
         
-        
-//        userCoordinator.start()
-//        let userVC = userCoordinator.navController
-//        userVC.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "user")?.resize(28.0, 28.0), selectedImage: nil)
-//        childCoordinators.append(userCoordinator)
-//
-//
-//
-//
-//        allUsersCoordinator.start()
-//        let allVC = allUsersCoordinator.navController
-//        allVC.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "group")?.resize(28.0, 28.0), selectedImage: nil)
-//        childCoordinators.append(allUsersCoordinator)
-//        allUsersCoordinator.parentCoordinator = self
-//
-//
-//        trainingCoordinator.start()
-//        let trVC = trainingCoordinator.navController
-//        trVC.tabBarItem = UITabBarItem(title: "Training", image: UIImage(named: "event")?.resize(28.0, 28.0), selectedImage: nil)
-//        childCoordinators.append(trainingCoordinator)
-//        trainingCoordinator.parentCoordinator = self
-       
-        tabBarController.delegate = self
-       
-        tabBarController.tabBar.isTranslucent = true
-//        handle = Auth.auth().addStateDidChangeListener{error,user in
-//            if user != nil{
-        let trainingVC = getTabController(trainingCoordinator)
+
         let uid = Auth.auth().currentUser?.uid
-        let child = getDataManager.userInfoRef.child(uid!)//add to service
+        let child = dataManager.userInfoRef.child(uid!)//add to service
         child.child("isAdmin").observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? Bool
             if data == true{
+               
+                let pages: [TabBarPage] = [.member, .training]
+                    .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
                 
-                let allVCC = self.getTabController(self.allUsersCoordinator)
-                self.tabBarController.setViewControllers([allVCC,trainingVC], animated: true)
+                // Initialization of ViewControllers or these pages
+                let controllers: [UINavigationController] = pages.map({ self.getTabController($0) })
+                
+                self.prepareTabBarController(withTabControllers: controllers)
                 
                 
                             } else{
-                                let userVCC = self.getTabController(self.userCoordinator)
-                                self.tabBarController.setViewControllers([userVCC,trainingVC], animated: true)
+                                let pages: [TabBarPage] = [.user, .training]
+                                    .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
+                                
+                               
+                                let controllers: [UINavigationController] = pages.map({ self.getTabController($0) })//primeni na svaki
+                                
+                                self.prepareTabBarController(withTabControllers: controllers)
                             }
             
         })
     }
     
-    func getTabController(_ coordinator: Coordinator) -> UINavigationController{
+    
+    
+    private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
+        /// Set delegate for UITabBarController
+        //tabBarController.delegate = self
+        /// Assign page's controllers
+        tabBarController.setViewControllers(tabControllers, animated: true)
+        /// Let set index
+       // tabBarController.selectedIndex = TabBarPage.
+        /// Styling
+       // tabBarController.tabBar.isTranslucent = false
         
-       let nav = coordinator.navController
-        childCoordinators.append(coordinator)
-        coordinator.parentCoordinator = self
+        /// In this step, we attach tabBarController to navigation controller associated with this coordanator
+        //navigationController.viewControllers = [tabBarController]
+    }
+    func selectPage(_ page: TabBarPage) {
+        tabBarController.selectedIndex = page.pageOrderNumber()
+    }
+
+    private func getTabController(_ page: TabBarPage) -> UINavigationController{
+        let navController = UINavigationController()
         
-        switch coordinator.type{
-            
+        navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
+                                                     image: page.pageIcon(),
+                                                     tag: page.pageOrderNumber())
+
+        switch page {
         case .user:
-           
-            nav.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "user")?.resize(28.0, 28.0), selectedImage: nil)
-            childCoordinators.append(coordinator)
-            coordinator.parentCoordinator = self
+          
+            let userCoordinator = UserCoordinator(navigationController: navController, dataManager: dataManager)
+            childCoordinators.append(userCoordinator)
+            userCoordinator.parentCoordinator = self
+            userCoordinator.start()
+            
+            return userCoordinator.navController
+
         case .member:
+           let memberCoordinator = AdminMembersCoordinator(navigationController: navController, dataManager: dataManager)
+            childCoordinators.append(memberCoordinator)
+            memberCoordinator.parentCoordinator = self
+            memberCoordinator.start()
             
-            nav.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "group")?.resize(28.0, 28.0), selectedImage: nil)
+            return memberCoordinator.navController
+            
         case .training:
+            let trainingCoordinator = TrainingCoordinator(navigationController: navController, dataManager: dataManager)
+            childCoordinators.append(trainingCoordinator)
+            trainingCoordinator.parentCoordinator = self
+            trainingCoordinator.start()
             
-            nav.tabBarItem = UITabBarItem(title: "Training", image: UIImage(named: "event")?.resize(28.0, 28.0), selectedImage: nil)
+            return trainingCoordinator.navController
+        }
         
-        default:
-            break
-        }
-        coordinator.start()
-         return nav
-        }
+        
+    }
     
-    //func prepareTabBarController(withTabContro)
     
-    func endTabCoordinator(){
-        parentCoordinator?.childDidFinish(self)
+    
+//    func endTabCoordinator(){
+//        parentCoordinator?.childDidFinish(self)
+//    }
+    
+    deinit{
+        print("TABBAR COOrDINATOR finished")
+        print(childCoordinators.count)
     }
 }
 
+extension TabCoordinator : switchTaber{
+    func switchToTab(_ page: TabBarPage) {
+        tabBarController.selectedIndex = page.pageOrderNumber()
+    }
+    
+    
+}

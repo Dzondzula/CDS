@@ -10,7 +10,7 @@ import UIKit
 
 class TrainingViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,DialogViewDelegate {
     
-    
+    var dataManager : DataManager!
     let cellId : String = "cellId"
     var sec = TrainingSections.getTraining()
     var sections = TrainingAPI.getTraining()
@@ -26,7 +26,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
                 guard let self = self else {return}
                 let newTraining = TrainingInfo(title: trainingType, image: trainingType, time: time)
                 
-                getDataManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).child("sport\(weekdays.training.count)").updateChildValues(["name": "\(trainingType)",
+                self.dataManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).child("sport\(weekdays.training.count)").updateChildValues(["name": "\(trainingType)",
                     "time":time])
                 self.sections[index].training.append(newTraining)
                 let indexPath = IndexPath(item: 0, section: 0)
@@ -51,12 +51,12 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
         let addTraining = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTraining))
         //addTraining.frame = CGRect(x:0, y:0, width:32, height:32)
         let uid = Auth.auth().currentUser?.uid
-        let child = getDataManager.userInfoRef.child(uid!)//add to service
+        let child = dataManager.userInfoRef.child(uid!)//add to service
         child.child("isAdmin").observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? Bool
             if data == true{
-                self.tabBarController!.navigationItem.rightBarButtonItems = [addTraining]
+                self.navigationItem.rightBarButtonItems = [addTraining]
                 //self.navigationController?.hidesBarsOnSwipe = true
             } else {
                 self.tabBarController!.navigationItem.rightBarButtonItems = []
@@ -69,7 +69,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
   
     func fetch(completion: @escaping (Result<TrainingSections,NetworkError>)-> Void){
         for (index, weekdays) in sections.enumerated(){
-            getDataManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).observeSingleEvent(of: .value){ snapshot,error in
+            dataManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).observeSingleEvent(of: .value){ snapshot,error in
            
                 var newArray : [TrainingInfo] = []
                 if  let dict = snapshot.value as? Dictionary<String,Dictionary<String,Any>> {

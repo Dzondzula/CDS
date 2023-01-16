@@ -9,7 +9,7 @@ import FirebaseStorage
 import Firebase
 import UIKit
 
-class MemberViewController: UIViewController,UINavigationControllerDelegate,CheckboxDialogViewDelegate {
+class MemberViewController: UIViewController,CheckboxDialogViewDelegate {
     
     //    lazy var storage = Storage.storage().reference(withPath: "images/\(uid!)")
     //    var informations: [UserInfo] = []
@@ -17,13 +17,14 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
     //    var handle: AuthStateDidChangeListenerHandle?
     //
     //    var refObserver:[DatabaseHandle] = []
+    var dataManager : DataManager!
     weak var coordinator : AdminMembersCoordinator?
     var arr : [String] = []
     var detailItem : UserInfo?
     var checkboxDialogViewController: CheckboxDialogViewController!
     
     //define typealias-es
-    typealias TranslationTuple = (name: String, translated: String)
+    typealias TranslationTuple = (name: String, price: String)
     typealias TranslationDictionary = [String : String]
     
     
@@ -103,7 +104,7 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
         tr.translatesAutoresizingMaskIntoConstraints = false
         tr.setTitle("Change training", for: .normal)
         tr.addTarget(self, action: #selector(editTraining), for: .touchUpInside)
-        
+
 
         return tr
     }()
@@ -202,10 +203,12 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
         super.viewDidLoad()
         
         
-        self.navigationItem.setHidesBackButton(true, animated: true)
+       // self.navigationItem.setHidesBackButton(true, animated: true)
         
         let editTraining = UIBarButtonItem(title: "Training", style: .plain, target: self, action: #selector(editTraining))
-        self.navigationItem.rightBarButtonItem = editTraining
+        coordinator?.navController.navigationItem.rightBarButtonItem = editTraining
+      
+       // tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .white
         
         
@@ -253,7 +256,7 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
            let url = URL(string: picture){
             self.profilePicture.loadImage(url: url)
         }
-        let child = getDataManager.userInfoRef.child(detailItem.uid)//add to service
+        let child = dataManager.userInfoRef.child(detailItem.uid)//add to service
         let child2 = child.child("Payments")
         child2.observeSingleEvent(of: .value, with: { [self](snapshot) in
             if snapshot.exists(){
@@ -290,17 +293,8 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
             }
         })
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.tabBarController?.navigationController?.isNavigationBarHidden = true
-        navigationController?.isNavigationBarHidden = true
-    }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        self.tabBarController?.navigationController?.isNavigationBarHidden = false
-        
-    }
+    
     
     @objc func editTraining(){
         
@@ -337,7 +331,7 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
             return
         }
         
-        let ref = getDataManager.userInfoRef.child(detailItem.uid)
+        let ref = dataManager.userInfoRef.child(detailItem.uid)
         DispatchQueue.global(qos: .background).async { [self] in
             let post = ["Training":arr]
             ref.updateChildValues(post)
@@ -368,6 +362,28 @@ class MemberViewController: UIViewController,UINavigationControllerDelegate,Chec
         mask.path = path.cgPath
         view.layer.mask = mask
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        tabBarController?.tabBar.isHidden = false
+//        //coordinator?.signOutTapped()
+//        //coordinator?.removeCoordinator()
+//        //self.dismiss(animated: true)
+//       // coordinator?.parentCoordinator?.endTabCoordinator()
+//        if let nav = coordinator?.navController{
+//           // nav.viewControllers.removeAll()
+//            let isPopping = !nav.viewControllers.contains(self)
+//            if isPopping{
+//                print("Popped out")
+//                print(nav.viewControllers.removeLast())
+//            } else{
+//                print("not popped")
+//                print("\(nav.viewControllers.description.description)")
+//                print(nav.viewControllers.count)
+//            }
+//        }
+//
+//    }
     
 }
 
@@ -407,7 +423,7 @@ extension MemberViewController {
             return
         }
         
-        let ref = getDataManager.userInfoRef.child(detailItem.uid)
+        let ref = dataManager.userInfoRef.child(detailItem.uid)
         let post = ["Training":arr]
         ref.updateChildValues(post)
         collectionView.reloadData()
@@ -418,7 +434,7 @@ extension MemberViewController {
         guard let detailItem = detailItem else {
             return
         }
-        let child = getDataManager.userInfoRef.child(detailItem.uid)//add to service
+        let child = dataManager.userInfoRef.child(detailItem.uid)//add to service
         let child2 = child.child("Payments")
         child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
             if snapshot.exists(){
@@ -492,7 +508,7 @@ extension MemberViewController {
         
         let value: Bool = false
             let post = ["isPaid":value]
-        let child = getDataManager.userInfoRef.child(detailItem!.uid)//add to service
+        let child = dataManager.userInfoRef.child(detailItem!.uid)//add to service
         let child2 = child.child("Payments")
         child2.updateChildValues(post)
     }

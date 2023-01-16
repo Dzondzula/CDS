@@ -15,7 +15,7 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
     var informations: [UserInfo] = []
     var user: User?
     var handle: AuthStateDidChangeListenerHandle?
-    
+    var dataManager : DataManager!
     var refObserver:[DatabaseHandle] = []
     
     var arr : [String] = []
@@ -208,7 +208,7 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                 self.profilePicture.loadImage(url: url)
             }
             let uid = Auth.auth().currentUser?.uid
-            let child = getDataManager.userInfoRef.child(uid!)//add to service
+            let child = self.dataManager.userInfoRef.child(uid!)//add to service
             let child2 = child.child("Payments")
             child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
                 
@@ -248,7 +248,7 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
         
         
         //      let completed =
-        getDataManager.userInfoRef.child(uid!).observe(.value){ snapshot,error in
+        dataManager.userInfoRef.child(uid!).observe(.value){ snapshot,error in
             var newArray: [UserInfo] = []
             if let dictionary = snapshot.value as? [String:Any]{
                 let username = dictionary["username"] as! String
@@ -256,12 +256,15 @@ class UserProfileViewController: UIViewController,UINavigationControllerDelegate
                 let lastName = dictionary["lastName"] as! String
                 let profilePic = dictionary["pictureURL"] as? String
                 let training = dictionary["Training"] as? [String]
+                let payments = dictionary["Payments"] as! [String: Any]
+                let isPaid = payments["isPaid"] as? Bool
                 let uid = dictionary["uid"] as! String
                 let admin = dictionary["isAdmin"] as! Bool
-                let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic,training: training, uid: uid, admin: admin)
+                let userInformation = UserInfo(firstName: firstName, lastName: lastName, username: username,pictureURL: profilePic,training: training, isPaid: isPaid, uid: uid, admin: admin)
                 //let user = UserInfo(snapshot: snapshot)
                 newArray.append(userInformation)
-               // print(newArray)
+                
+                print(newArray)
                 completion(.success(newArray))
                 //print(newArray)
             }
@@ -359,7 +362,7 @@ extension UserProfileViewController: UIImagePickerControllerDelegate{
                 print("Obican url:\(url)")
                 let urlString = url.absoluteString//convert URL to String
                 let uid = Auth.auth().currentUser?.uid
-                let ref = getDataManager.userInfoRef.child(uid!)
+                let ref = self.dataManager.userInfoRef.child(uid!)
                 let post = ["pictureURL":urlString]
                 ref.updateChildValues(post)
                

@@ -17,16 +17,18 @@ class UserCoordinator: NSObject,Coordinator {
     
    lazy var childCoordinators: [Coordinator] = []
     
-
+    var dataManager : DataManager
     var navController: UINavigationController
     
     
-    init(navigationController: UINavigationController){
+    init(navigationController: UINavigationController,dataManager: DataManager){
         self.navController = navigationController
+        self.dataManager = dataManager
     }
 
     func start(){
         let userVC = UserProfileViewController()
+      
         navController.setViewControllers([userVC], animated: true)
     }
 }

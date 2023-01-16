@@ -17,10 +17,11 @@ struct UserInfo{
     let username: String
     let pictureURL : String?
     let training : [String]?
+    var isPaid : Bool?
     let uid: String
     let admin: Bool
     
-    init(firstName: String, lastName:String,username:String,pictureURL:String?,training:[String]?,uid:String,admin:Bool, key:String = "" ){
+    init(firstName: String, lastName:String,username:String,pictureURL:String?,training:[String]?,isPaid:Bool?,uid:String,admin:Bool, key:String = "" ){
         self.ref = nil
         self.key = key
         self.firstName = firstName
@@ -28,6 +29,7 @@ struct UserInfo{
         self.username = username
         self.pictureURL = pictureURL
         self.training = training
+        self.isPaid = isPaid
         self.uid = uid
         self.admin = admin
         
@@ -40,6 +42,7 @@ struct UserInfo{
               let username = value["userName"] as? String,
               let profilePic = value["pictureURL"] as? String,
               let training = value["Training"] as? [String],
+              let isPaid = value["isPaid"] as? Bool,
               let uid = value["uid"] as? String,
               let admin = value["isAdmin"] as? Bool
                 
@@ -52,6 +55,7 @@ struct UserInfo{
         self.username = username
         self.pictureURL = profilePic
         self.training = training
+        self.isPaid = isPaid
         self.uid = uid
         self.admin = admin
     }

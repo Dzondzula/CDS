@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1B800C294C9CE900A92512 /* MemberTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B800B294C9CE900A92512 /* MemberTableViewModel.swift */; };
+		2CFA59AE297588DB009D0134 /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20ED27959FB900C93654 /* TagFlowLayout.swift */; };
+		2CFA59B52975892B009D0134 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59B12975892B009D0134 /* CustomCell.swift */; };
+		2CFA59B62975892B009D0134 /* SubCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59B22975892B009D0134 /* SubCustomCell.swift */; };
+		2CFA59B72975892B009D0134 /* TrainingSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59B32975892B009D0134 /* TrainingSections.swift */; };
+		2CFA59B82975892B009D0134 /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59B42975892B009D0134 /* DialogViewController.swift */; };
+		2CFA59BA29758AC3009D0134 /* MemberTableViewCellSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59B929758AC3009D0134 /* MemberTableViewCellSwiftUI.swift */; };
+		2CFA59BC29758B0D009D0134 /* MemberCellSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA59BB29758B0D009D0134 /* MemberCellSwiftUI.swift */; };
 		34C0DAAA7F06A0607BAA8C46 /* Pods_LoginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6ED4E40D032A13BE99C75 /* Pods_LoginTests.framework */; };
 		BCA2C62BE3E305B3F7998E67 /* Pods_MyFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B0B638E1165C3869E34E80 /* Pods_MyFirebase.framework */; };
 		C107665927A309A7006FE78D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C107665827A309A7006FE78D /* Utilities.swift */; };
@@ -14,9 +22,9 @@
 		C10E3161278A0DF80005E19C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3160278A0DF80005E19C /* UserInfo.swift */; };
 		C10E3166278A3F690005E19C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3165278A3F690005E19C /* UserProfileViewController.swift */; };
 		C10E3168278A3F910005E19C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10E3167278A3F910005E19C /* GoogleService-Info.plist */; };
-		C115B8A12790479E006388DD /* AllUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115B8A02790479E006388DD /* AllUsersViewController.swift */; };
+		C115B8A12790479E006388DD /* AdminMemebersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115B8A02790479E006388DD /* AdminMemebersViewController.swift */; };
 		C115B8A4279050E6006388DD /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C115B8A3279050E6006388DD /* MemberTableViewCell.swift */; };
-		C11BE9DC278C856A00E11524 /* getDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BE9DB278C856A00E11524 /* getDataManager.swift */; };
+		C11BE9DC278C856A00E11524 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BE9DB278C856A00E11524 /* DataManager.swift */; };
 		C13F8E4B279EF54100F1396B /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F8E4A279EF54100F1396B /* TabViewController.swift */; };
 		C143337D280D991E001A1DB2 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143337C280D991E001A1DB2 /* LoginTests.swift */; };
 		C143338628105B14001A1DB2 /* LoginOutlets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143338528105B14001A1DB2 /* LoginOutlets.swift */; };
@@ -40,14 +48,9 @@
 		C17B54C3285B48F5007FC6A6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B54C2285B48F4007FC6A6 /* Router.swift */; };
 		C18D20EA27959C8C00C93654 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20E927959C8C00C93654 /* TagCollectionViewCell.swift */; };
 		C18D20EC27959CF700C93654 /* TagCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20EB27959CF700C93654 /* TagCollectionReusableView.swift */; };
-		C18D20EE27959FB900C93654 /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D20ED27959FB900C93654 /* TagFlowLayout.swift */; };
 		C1A245FD2821638600BB6004 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A245FC2821638600BB6004 /* main.swift */; };
 		C1A245FF2821651900BB6004 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A245FE2821651900BB6004 /* TestingAppDelegate.swift */; };
 		C1A38DBA282153910037A1D5 /* UsersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A38DB9282153910037A1D5 /* UsersTests.swift */; };
-		C1D26172279E0ABC005BEB4F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D26171279E0ABC005BEB4F /* CustomCell.swift */; };
-		C1D26174279E0AC4005BEB4F /* SubCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D26173279E0AC4005BEB4F /* SubCustomCell.swift */; };
-		C1D26176279E0ACD005BEB4F /* TrainingSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D26175279E0ACD005BEB4F /* TrainingSections.swift */; };
-		C1D26178279E0AD8005BEB4F /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D26177279E0AD8005BEB4F /* DialogViewController.swift */; };
 		C1D2617A279E0B99005BEB4F /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D26179279E0B99005BEB4F /* TrainingViewController.swift */; };
 		F8D8E369A8336D6986E6C21B /* Pods_UsersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8103E3DB33547FD450FE42 /* Pods_UsersTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,13 @@
 		1524817F5BAE8EF4DFA33317 /* Pods-UsersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UsersTests.release.xcconfig"; path = "Target Support Files/Pods-UsersTests/Pods-UsersTests.release.xcconfig"; sourceTree = "<group>"; };
 		20FD61D266353A410313B749 /* Pods-MyFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirebase.release.xcconfig"; path = "Target Support Files/Pods-MyFirebase/Pods-MyFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		2286C0406F947D4467474065 /* Pods-LoginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginTests.release.xcconfig"; path = "Target Support Files/Pods-LoginTests/Pods-LoginTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C1B800B294C9CE900A92512 /* MemberTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewModel.swift; sourceTree = "<group>"; };
+		2CFA59B12975892B009D0134 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		2CFA59B22975892B009D0134 /* SubCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomCell.swift; sourceTree = "<group>"; };
+		2CFA59B32975892B009D0134 /* TrainingSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSections.swift; sourceTree = "<group>"; };
+		2CFA59B42975892B009D0134 /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
+		2CFA59B929758AC3009D0134 /* MemberTableViewCellSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCellSwiftUI.swift; sourceTree = "<group>"; };
+		2CFA59BB29758B0D009D0134 /* MemberCellSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCellSwiftUI.swift; sourceTree = "<group>"; };
 		4F1BD5770F7C690FC6AD9FE5 /* Pods-MyFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirebase.debug.xcconfig"; path = "Target Support Files/Pods-MyFirebase/Pods-MyFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		99263C4C54B00F4620980FEC /* Pods-LoginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginTests.debug.xcconfig"; path = "Target Support Files/Pods-LoginTests/Pods-LoginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C107665827A309A7006FE78D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -81,9 +91,9 @@
 		C10E3160278A0DF80005E19C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C10E3165278A3F690005E19C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		C10E3167278A3F910005E19C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C115B8A02790479E006388DD /* AllUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewController.swift; sourceTree = "<group>"; };
+		C115B8A02790479E006388DD /* AdminMemebersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMemebersViewController.swift; sourceTree = "<group>"; };
 		C115B8A3279050E6006388DD /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
-		C11BE9DB278C856A00E11524 /* getDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDataManager.swift; sourceTree = "<group>"; };
+		C11BE9DB278C856A00E11524 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C13F8E4A279EF54100F1396B /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		C143337A280D991E001A1DB2 /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143337C280D991E001A1DB2 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
@@ -116,10 +126,6 @@
 		C1A38DB7282153910037A1D5 /* UsersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A38DB9282153910037A1D5 /* UsersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTests.swift; sourceTree = "<group>"; };
 		C1A6ED4E40D032A13BE99C75 /* Pods_LoginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1D26171279E0ABC005BEB4F /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		C1D26173279E0AC4005BEB4F /* SubCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomCell.swift; sourceTree = "<group>"; };
-		C1D26175279E0ACD005BEB4F /* TrainingSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSections.swift; sourceTree = "<group>"; };
-		C1D26177279E0AD8005BEB4F /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		C1D26179279E0B99005BEB4F /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		E1B0B638E1165C3869E34E80 /* Pods_MyFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8103E3DB33547FD450FE42 /* Pods_UsersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UsersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,13 +169,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2CFA59B02975892B009D0134 /* TrainingViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2CFA59B12975892B009D0134 /* CustomCell.swift */,
+				2CFA59B22975892B009D0134 /* SubCustomCell.swift */,
+				2CFA59B32975892B009D0134 /* TrainingSections.swift */,
+				2CFA59B42975892B009D0134 /* DialogViewController.swift */,
+			);
+			path = TrainingViewCells;
+			sourceTree = "<group>";
+		};
 		C10E3162278A0E130005E19C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C10E3160278A0DF80005E19C /* UserInfo.swift */,
 				C10E315E278A0A700005E19C /* User.swift */,
 				C107665827A309A7006FE78D /* Utilities.swift */,
-				C11BE9DB278C856A00E11524 /* getDataManager.swift */,
+				C11BE9DB278C856A00E11524 /* DataManager.swift */,
 				C143338528105B14001A1DB2 /* LoginOutlets.swift */,
 			);
 			path = Model;
@@ -180,12 +197,12 @@
 			children = (
 				C16DFC6D2789DFAE00E7AAB5 /* LogInViewController.swift */,
 				C16DFC7D2789EEED00E7AAB5 /* RegisterViewController.swift */,
-				C10E3165278A3F690005E19C /* UserProfileViewController.swift */,
-				C115B8A02790479E006388DD /* AllUsersViewController.swift */,
 				C15CAE1A278FA1210008C889 /* ForgotPasswordViewController.swift */,
-				C147928D2799DD540030D2A7 /* MemberViewController.swift */,
-				C1D26179279E0B99005BEB4F /* TrainingViewController.swift */,
 				C13F8E4A279EF54100F1396B /* TabViewController.swift */,
+				C115B8A02790479E006388DD /* AdminMemebersViewController.swift */,
+				C147928D2799DD540030D2A7 /* MemberViewController.swift */,
+				C10E3165278A3F690005E19C /* UserProfileViewController.swift */,
+				C1D26179279E0B99005BEB4F /* TrainingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,11 +210,14 @@
 		C115B8A227905096006388DD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C1D26170279E0A81005BEB4F /* TrainingViewCells */,
+				2CFA59B02975892B009D0134 /* TrainingViewCells */,
 				C115B8A3279050E6006388DD /* MemberTableViewCell.swift */,
+				2CFA59B929758AC3009D0134 /* MemberTableViewCellSwiftUI.swift */,
+				2C1B800B294C9CE900A92512 /* MemberTableViewModel.swift */,
 				C18D20E927959C8C00C93654 /* TagCollectionViewCell.swift */,
 				C18D20EB27959CF700C93654 /* TagCollectionReusableView.swift */,
 				C18D20ED27959FB900C93654 /* TagFlowLayout.swift */,
+				2CFA59BB29758B0D009D0134 /* MemberCellSwiftUI.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -282,17 +302,6 @@
 				C1A245FE2821651900BB6004 /* TestingAppDelegate.swift */,
 			);
 			path = UsersTests;
-			sourceTree = "<group>";
-		};
-		C1D26170279E0A81005BEB4F /* TrainingViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				C1D26177279E0AD8005BEB4F /* DialogViewController.swift */,
-				C1D26175279E0ACD005BEB4F /* TrainingSections.swift */,
-				C1D26173279E0AC4005BEB4F /* SubCustomCell.swift */,
-				C1D26171279E0ABC005BEB4F /* CustomCell.swift */,
-			);
-			name = TrainingViewCells;
 			sourceTree = "<group>";
 		};
 		E843A102EFD86805DC5D0F1E /* Pods */ = {
@@ -574,36 +583,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11BE9DC278C856A00E11524 /* getDataManager.swift in Sources */,
+				2CFA59AE297588DB009D0134 /* TagFlowLayout.swift in Sources */,
+				C11BE9DC278C856A00E11524 /* DataManager.swift in Sources */,
 				C18D20EC27959CF700C93654 /* TagCollectionReusableView.swift in Sources */,
 				C1A245FD2821638600BB6004 /* main.swift in Sources */,
+				2CFA59B52975892B009D0134 /* CustomCell.swift in Sources */,
 				C107665927A309A7006FE78D /* Utilities.swift in Sources */,
 				C16DFC6E2789DFAE00E7AAB5 /* LogInViewController.swift in Sources */,
 				C17B54AD284E5CD8007FC6A6 /* Storyboarded.swift in Sources */,
 				C147928E2799DD540030D2A7 /* MemberViewController.swift in Sources */,
 				C16DFC6A2789DFAE00E7AAB5 /* AppDelegate.swift in Sources */,
-				C1D26174279E0AC4005BEB4F /* SubCustomCell.swift in Sources */,
 				C17B54B9285258D2007FC6A6 /* UserCoordinator.swift in Sources */,
-				C1D26178279E0AD8005BEB4F /* DialogViewController.swift in Sources */,
 				C10E3166278A3F690005E19C /* UserProfileViewController.swift in Sources */,
 				C143338628105B14001A1DB2 /* LoginOutlets.swift in Sources */,
-				C1D26172279E0ABC005BEB4F /* CustomCell.swift in Sources */,
 				C16DFC6C2789DFAE00E7AAB5 /* SceneDelegate.swift in Sources */,
 				C17B54BB28525D9B007FC6A6 /* LoginCoordinator.swift in Sources */,
+				2CFA59B72975892B009D0134 /* TrainingSections.swift in Sources */,
+				2CFA59B82975892B009D0134 /* DialogViewController.swift in Sources */,
 				C17B54BD2853C0DE007FC6A6 /* Coordinator.swift in Sources */,
 				C17B54B52851576B007FC6A6 /* AdminMembersCoordinator.swift in Sources */,
 				C17B54AB284E46CD007FC6A6 /* MainCoordinator.swift in Sources */,
 				C1D2617A279E0B99005BEB4F /* TrainingViewController.swift in Sources */,
-				C1D26176279E0ACD005BEB4F /* TrainingSections.swift in Sources */,
+				2CFA59B62975892B009D0134 /* SubCustomCell.swift in Sources */,
 				C13F8E4B279EF54100F1396B /* TabViewController.swift in Sources */,
 				C17B54C3285B48F5007FC6A6 /* Router.swift in Sources */,
-				C115B8A12790479E006388DD /* AllUsersViewController.swift in Sources */,
+				C115B8A12790479E006388DD /* AdminMemebersViewController.swift in Sources */,
+				2CFA59BC29758B0D009D0134 /* MemberCellSwiftUI.swift in Sources */,
 				C15CAE1B278FA1220008C889 /* ForgotPasswordViewController.swift in Sources */,
+				2C1B800C294C9CE900A92512 /* MemberTableViewModel.swift in Sources */,
+				2CFA59BA29758AC3009D0134 /* MemberTableViewCellSwiftUI.swift in Sources */,
 				C10E315F278A0A700005E19C /* User.swift in Sources */,
 				C17B54B72851578A007FC6A6 /* TrainingCoordinator.swift in Sources */,
 				C17B54B328515587007FC6A6 /* TabCoordinator.swift in Sources */,
 				C115B8A4279050E6006388DD /* MemberTableViewCell.swift in Sources */,
-				C18D20EE27959FB900C93654 /* TagFlowLayout.swift in Sources */,
 				C18D20EA27959C8C00C93654 /* TagCollectionViewCell.swift in Sources */,
 				C10E3161278A0DF80005E19C /* UserInfo.swift in Sources */,
 				C16DFC7E2789EEED00E7AAB5 /* RegisterViewController.swift in Sources */,
@@ -836,7 +848,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Y4YSK5BF4;
+				DEVELOPMENT_TEAM = 974TXF57Q7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyFirebase/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow app to use camera";
@@ -869,7 +881,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Y4YSK5BF4;
+				DEVELOPMENT_TEAM = 974TXF57Q7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyFirebase/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow app to use camera";

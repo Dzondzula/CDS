@@ -23,7 +23,7 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
   
-      
+        
         Utilities.styleFilledButton(login)
         Utilities.styleHollowButton(register)
 //        Utilities.styleTextField(username)
@@ -52,7 +52,7 @@ import UIKit
             return
         }
         Auth.auth().removeStateDidChangeListener(handle)
-        coordinator?.finished()
+        //coordinator?.finished()
     }
 
     @IBAction func registerTapped(_ sender: Any) {
@@ -90,21 +90,9 @@ import UIKit
 
         handle = Auth.auth().addStateDidChangeListener{error,user in
             if user != nil{
-//                let uid = Auth.auth().currentUser?.uid
-//                let child = DataObjects.infoRef.child(uid!)
-//                child.child("isAdmin").observeSingleEvent(of: .value, with: {(snapshot) in
-//
-//                    let data = snapshot.value as? Bool
-//                    if data == true{
+
                         UserDefaults.standard.set(true, forKey: "Logged")
-//                        self.navigationController?.pushViewController(AllUsersViewController(), animated: true)
-//
-//
-//                    } else {
-//                        UserDefaults.standard.set(true, forKey: "UserLogged")
-//                        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
-//                    }
-//                })
+
                 self.login.hideLoading()
                 self.didSendEvent()
                 self.password.text = nil
@@ -115,6 +103,10 @@ import UIKit
             }
     }
     }
+     
+     deinit {
+         print("loginVC deinit")
+     }
     
     }
 extension LogInViewController: UITextFieldDelegate {

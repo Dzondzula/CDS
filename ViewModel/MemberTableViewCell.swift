@@ -9,31 +9,16 @@ import UIKit
 
 class MemberTableViewCell: UITableViewCell {
     
-    func config(with item: UserInfo){
-        if item.admin == false{
-        if let picture = item.pictureURL,
-           let url = URL(string: picture){
-        profileImageView.loadImage(url: url)
-        } else {
-            profileImageView.image = UIImage(named: "venom")
-        }
-            nameLabel.text = item.firstName
-            guard let trening = item.training else {return}
-            trainingLabel.text = trening[0]
-            
-            let child = getDataManager.userInfoRef.child(item.uid)//add to service
-            let child2 = child.child("Payments")
-            child2.child("isPaid").observeSingleEvent(of: .value, with: { [self](snapshot) in
-                if snapshot.exists(){
-                let data = snapshot.value as! Bool
-                    if data == true{
-                        paymentBulb.image = UIImage(named: "greenLight")
-                    } else if data == false{
-                        paymentBulb.image = UIImage(named: "redLight")
-                    }
-                }
-            })
-    }
+    
+    
+    func config(with viewModel: MembersRepresentable){
+        if viewModel.isAdmin == false
+        {
+            profileImageView.loadImage(url: viewModel.imageUrl)
+            nameLabel.text = viewModel.name
+            trainingLabel.text = viewModel.training
+            paymentBulb.image = viewModel.isPaid ? UIImage(named: "greenLight") : UIImage(named: "redLight")
+}
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -123,6 +108,8 @@ class MemberTableViewCell: UITableViewCell {
 //    }
 
 }
+
+
 extension UIImageView{
     func loadImage(url : URL){
         DispatchQueue.global().async {

@@ -11,7 +11,7 @@ class TrainingCoordinator: NSObject,Coordinator {
     var type: CoordinatorType {.training}
     
     var finishDelegate: CoordinatorFinishDelegate?
-    
+    var dataManager : DataManager
    weak var parentCoordinator: Coordinator?
     
     var childCoordinators = [Coordinator]()
@@ -19,12 +19,15 @@ class TrainingCoordinator: NSObject,Coordinator {
     var navController: UINavigationController
     
     
-    init(navigationController: UINavigationController){
+    init(navigationController: UINavigationController,dataManager: DataManager){
         self.navController = navigationController
+        self.dataManager = dataManager
     }
 
     func start(){
         let trainingVC = TrainingViewController()
+        trainingVC.dataManager = dataManager
+        
         navController.setViewControllers([trainingVC], animated: true)
     }
 }

@@ -10,10 +10,10 @@ import XCTest
 import SnapshotTesting
 class UsersTests: XCTestCase {
 
-    var sut: AllUsersViewController!
+    var sut: AdminMemebersViewController!
     
     override func setUp() {
-        sut = AllUsersViewController()
+        sut = AdminMemebersViewController()
         sut.loadViewIfNeeded()
     }
     override func tearDown() {
@@ -28,7 +28,7 @@ class UsersTests: XCTestCase {
     
     func setUsers(){
         for number in 0...5{
-            let user = UserInfo(firstName: "Nikola", lastName: "Andr", username: "lol", pictureURL: nil, training: ["mjau","idegasara"], uid: "\(number)", admin: false)
+            let user = UserInfo(firstName: "Nikola", lastName: "Andr", username: "lol", pictureURL: nil, training: ["mjau","idegasara"], isPaid: false, uid: "\(number)", admin: false)
             sut.users.append(user)
         }
         

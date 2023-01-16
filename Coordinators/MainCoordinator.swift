@@ -10,14 +10,14 @@ import Foundation
 class MainCoordinator: NSObject,Coordinator,UINavigationControllerDelegate{
     var parentCoordinator: Coordinator?
     
-    var navController: UINavigationController = UINavigationController()
+    var navController: UINavigationController = UINavigationController()//The AppCoordinator class will be responsible for navigating the application, which implies that it needs access to a UINavigationController instance.
     var tabBarController: UITabBarController = UITabBarController()
     
     var type: CoordinatorType {.app}
     
     weak var finishDelegate: CoordinatorFinishDelegate? = nil
     
-    
+    let dataManager = DataManager()
     var rootViewController: UIViewController?
     var childCoordinators: [Coordinator] = []
     var window: UIWindow
@@ -40,18 +40,20 @@ class MainCoordinator: NSObject,Coordinator,UINavigationControllerDelegate{
     func showLoginVC(){
         rootViewController = navController
         window.rootViewController = rootViewController
-        
-        let loginViewCoordinator = LoginCoordinator(navigationController: rootViewController as! UINavigationController, router: Router(rootController: rootViewController as! UINavigationController))
+        window.makeKeyAndVisible()
+        let loginViewCoordinator = LoginCoordinator(navigationController: rootViewController as! UINavigationController, router: Router(rootController: rootViewController as! UINavigationController), dataManager: dataManager)
+        //navController.navigationBar.isHidden = true
         loginViewCoordinator.finishDelegate = self
         loginViewCoordinator.start()
         childCoordinators.append(loginViewCoordinator)
+        print(childCoordinators)
     }
     
     func showTabVC(){
         rootViewController = tabBarController
         window.rootViewController = rootViewController
-        
-        let tabCoordinator = TabCoordinator(tabBarController: rootViewController as! UITabBarController, navController: navController)
+        window.makeKeyAndVisible()
+        let tabCoordinator = TabCoordinator(tabBarController: rootViewController as! UITabBarController, navController: navController, dataManager: dataManager)
         tabCoordinator.finishDelegate = self
         tabCoordinator.start()
         childCoordinators.append(tabCoordinator)
@@ -94,6 +96,10 @@ extension Coordinator{
         childCoordinators.removeAll()
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
+    
+   
+
 }
 
 
+//First, we remove any segues from the main storyboard. Second, the main storyboard needs to assign a storyboard identifier to every view controller it contains. By assigning a storyboard identifier to a view controller, the storyboard is able to instantiate that view controller. Third, we move the instantiation of view controllers to the coordinator. View controllers should not be responsible for instantiating other view controllers. Fourth, the coordinator is in charge of navigating between view controllers. A view controller should not know how to show or hide view controllers, including itself.
