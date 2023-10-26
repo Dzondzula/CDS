@@ -7,28 +7,33 @@
 
 import UIKit
 
-class UserCoordinator: NSObject,Coordinator {
+class UserCoordinator: NSObject, Coordinator {
+    var rootViewController: UIViewController
+
+    var parentCoordinatorr: MainBaseCoordinator?
+
    weak var parentCoordinator: Coordinator?
-    
+
     var type: CoordinatorType {.user}
-    
+
     var finishDelegate: CoordinatorFinishDelegate?
-    
-    
+
    lazy var childCoordinators: [Coordinator] = []
-    
-    var dataManager : DataManager
-    var navController: UINavigationController
-    
-    
-    init(navigationController: UINavigationController,dataManager: DataManager){
-        self.navController = navigationController
+
+    var dataManager: ClientManager
+  //  var navController: UINavigationController!
+
+    init(navigationController: UINavigationController, dataManager: ClientManager) {
+        self.rootViewController = navigationController
         self.dataManager = dataManager
     }
 
-    func start(){
-        let userVC = UserProfileViewController()
-      
-        navController.setViewControllers([userVC], animated: true)
+    func start() -> UIViewController {
+        let userVC = UserProfileViewController(dataManager: dataManager, tagContainer: TagContainer(handlers: [UserTagHandler()]))
+        userVC.coordinator = self
+        rootViewController = UINavigationController(rootViewController: userVC)
+        return rootViewController
+///        navController.setViewControllers([userVC], animated: true)
+        // return userVC
     }
 }

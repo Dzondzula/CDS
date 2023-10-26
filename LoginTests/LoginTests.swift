@@ -11,7 +11,7 @@ import SnapshotTesting
 class LoginTests: XCTestCase {
 
     var sut: LogInViewController!
-    
+
     override func setUp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: String(describing: LogInViewController.self))
@@ -20,22 +20,22 @@ class LoginTests: XCTestCase {
     override func tearDown() {
         sut = nil
     }
-    
-    func testLoginVC(){
+
+    func testLoginVC() {
         _ = LogInViewController.instantiate()
     }
-    
-    func testInitialLoginScreen(){
+
+    func testInitialLoginScreen() {
         tap(sut.login)
-        
+
         assertSnapshot(matching: sut, as: .image)
     }
-    
-    func testLogInButton(){
+
+    func testLogInButton() {
         let result = verifySnapshot(matching: sut.login, as: .image)
         XCTAssertNil(result)
     }
-    func tap(_ button: UIButton){
+    func tap(_ button: UIButton) {
         button.sendActions(for: .touchUpInside)
     }
 }

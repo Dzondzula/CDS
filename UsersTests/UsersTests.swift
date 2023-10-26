@@ -10,28 +10,26 @@ import XCTest
 import SnapshotTesting
 class UsersTests: XCTestCase {
 
-    var sut: AdminMemebersViewController!
-    
+    var sut: MemebersViewController!
+
     override func setUp() {
-        sut = AdminMemebersViewController()
+        sut = MemebersViewController()
         sut.loadViewIfNeeded()
     }
     override func tearDown() {
         sut = nil
     }
-    
-    func testInitialLoginScreen(){
+
+    func testInitialLoginScreen() {
         setUsers()
-        
+
         assertSnapshot(matching: sut, as: .image, record: true)
     }
-    
-    func setUsers(){
-        for number in 0...5{
-            let user = UserInfo(firstName: "Nikola", lastName: "Andr", username: "lol", pictureURL: nil, training: ["mjau","idegasara"], isPaid: false, uid: "\(number)", admin: false)
+
+    func setUsers() {
+        for number in 0...5 {
+            let user = UserInfo(firstName: "Nikola", lastName: "Andr", username: "lol", pictureURL: nil, training: ["mjau", "idegasara"], isPaid: false, uid: "\(number)", admin: false)
             sut.users.append(user)
         }
-        
     }
-
 }

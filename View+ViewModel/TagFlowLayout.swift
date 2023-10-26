@@ -51,5 +51,4 @@ class TagFlowLayout: UICollectionViewFlowLayout {
         }
         return rows.flatMap { $0.attributes }
     }
-
 }

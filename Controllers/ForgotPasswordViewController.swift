@@ -7,13 +7,13 @@
 
 import UIKit
 import Firebase
-class ForgotPasswordViewController: UIViewController,Storyboarded {
+class ForgotPasswordViewController: UIViewController, Storyboarded {
 
     @IBOutlet weak var emailText: UITextField!
-    
+
     @IBAction func sendButton(_ sender: Any) {
 
-        navigationController?.pushViewController(AdminMemebersViewController(), animated: true)
+       // navigationController?.pushViewController(MemebersViewController(), animated: true)
         //        let auth = Auth.auth()
 //
 //                auth.sendPasswordReset(withEmail: emailText.text!) { (error) in

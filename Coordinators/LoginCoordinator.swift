@@ -7,46 +7,54 @@
 
 import UIKit
 
-class LoginCoordinator: NSObject,Coordinator,UINavigationControllerDelegate {
+
+
+class LoginCoordinator: NSObject, LoginBaseCoordinator, UINavigationControllerDelegate {
+
+    var parentCoordinator: Coordinator?
+
+    var rootViewController: UIViewController
+
+    var parentCoordinatorr: MainBaseCoordinator?
+
     var type: CoordinatorType {.login}
-    
+
     weak var finishDelegate: CoordinatorFinishDelegate?
-    var dataManager : DataManager
     private let router: RouterProtocol
-    weak var parentCoordinator : Coordinator?
-    var navController: UINavigationController
-    var childCoordinators:[Coordinator] = []
-    
-    init(navigationController: UINavigationController,router: RouterProtocol,dataManager: DataManager){
-        self.navController = navigationController
+
+    // var navController: UINavigationController!
+    var childCoordinators: [Coordinator] = []
+
+    init(navigationController: UINavigationController, router: RouterProtocol) {
+        self.rootViewController = navigationController
         self.router = router
-        self.dataManager = dataManager
     }
-    
-    func start(){
+
+    func start() -> UIViewController {
+        print("Function: \(#function), line: \(#line)")
         let loginVC = LogInViewController.instantiate()
-        navController.delegate = self
         loginVC.didSendEvent = {[weak self] in
             self?.finish()
         }
         loginVC.title = "S"
-        navController.navigationBar.isHidden = true
         loginVC.coordinator = self
+
+        // rootViewController = UINavigationController(rootViewController: loginVC)
+        (rootViewController as! UINavigationController).delegate = self
         self.router.setRootModule(loginVC)
         // navController.setViewControllers([loginVC], animated: true)
+        return rootViewController
     }
-    
-    func showRegister(){
+
+    func showRegister() {
         let vc = RegisterViewController.instantiate()
-        vc.dataManager = dataManager
         vc.coordinator = self
-        navController.navigationBar.isHidden = false
+        (rootViewController as! UINavigationController).navigationBar.isHidden = false
         router.push(vc)
-        //navController.pushViewController(vc, animated: true)
-        
-        
+        // navController.pushViewController(vc, animated: true)
+
     }
-    
+
     //    func toTabBar(){
     //        self.finish()
     ////       let rootViewController = UITabBarController()
@@ -57,12 +65,12 @@ class LoginCoordinator: NSObject,Coordinator,UINavigationControllerDelegate {
     ////        tabCoordinator.start()
     ////        childCoordinators.append(tabCoordinator)
     //    }
-    
-    func finished(){
+
+    func finished() {
         parentCoordinator?.childDidFinish(self)
     }
-    
-    deinit{
+
+    deinit {
         print("LoginCoordinator deinit")
     }
 }

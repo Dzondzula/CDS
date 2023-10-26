@@ -7,27 +7,23 @@
 import Firebase
 import UIKit
 
-
-class RegisterViewController: UIViewController,Storyboarded {
+class RegisterViewController: UIViewController, Storyboarded {
 
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var firstName: UITextField!
-    var dataManager : DataManager!
     weak var coordinator: LoginCoordinator?
-    
-    
-            
+
     override func viewDidLoad() {
         super.viewDidLoad()
        // tabBarController?.hidesBottomBarWhenPushed = true
-        
+
     }
-    
-    @IBAction func registerButtonTapped(_ sender: Any) {
-        let admin:Bool = false
+
+    @IBAction private func registerButtonTapped(_ sender: Any) {
+        let admin: Bool = false
         guard let password = passwordText.text,
               let username = usernameText.text,
               let email = emailText.text,
@@ -37,39 +33,38 @@ class RegisterViewController: UIViewController,Storyboarded {
               !username.isEmpty,
               !lastName.isEmpty,
               !firstName.isEmpty
-                
+
         else {return}
-        
-        Auth.auth().createUser(withEmail: email, password: password){user,error in
+
+        Auth.auth().createUser(withEmail: email, password: password) {_, error in
             if error == nil {
-                Auth.auth().signIn(withEmail: email, password: password){result,_ in
-                    let uid = Auth.auth().currentUser?.uid
-                    let ref = self.dataManager.userInfoRef.child(uid!)
-                    ref.setValue(["uid":uid!,"email":email,"password":password,"firstName":firstName,"lastName":lastName,"username":username,"isAdmin":admin])
+                Auth.auth().signIn(withEmail: email, password: password) {auth, _ in
+                   guard let uid = auth?.user.uid else {return}
+                    let ref = ClientManager.userInfoRef.child(uid)
+                    ref.setValue(["uid": uid, "email": email, "password": password, "firstName": firstName, "lastName": lastName, "username": username, "isAdmin": admin])
                     UserDefaults.standard.set(true, forKey: "Logged")
 //                    self.navigationController?.pushViewController(TabViewController(), animated: true)
-                }//toAnyObject can be used here
+                }// toAnyObject can be used here
             } else {
                 print("error in user creation")
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let nav = coordinator?.navController{
+        if let nav = (coordinator?.rootViewController as? UINavigationController) {
             let isPopping = !nav.viewControllers.contains(self)
-            if isPopping{
+            if isPopping {
                 print("Popped out")
                 print(nav.viewControllers.count)
-            } else{
+            } else {
                 print("not popped")
             }
         }
-        //self.dismiss(animated: false)
+        // self.dismiss(animated: false)
     }
-    deinit{
+    deinit {
         print("DEINITIALIZED REGISTER")
     }
-
 }

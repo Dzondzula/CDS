@@ -8,21 +8,22 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+// swiftlint:disable all
     var window: UIWindow?
-    var coordinator: MainCoordinator!
+    var coordinator : MainCoordinator!
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
-               window?.windowScene = windowScene
-        
+        window?.windowScene = windowScene
         coordinator = MainCoordinator(window: window!)
-        //window?.makeKeyAndVisible()
-        coordinator.start()
-        //The navigation controller of the application coordinator is the root view controller of the application window, but the navigation controller doesn't have a root view controller it can display
-        //The quotes view controller in the main storyboard is no longer tightly coupled to a navigation controller. This increases the reusability of the ViewController classes.
-      
+        Task{
+        await coordinator.start()
+    }
+        // The navigation controller of the application coordinator is the root view controller of the application window, but the navigation controller doesn't have a root view controller it can display
+        // The quotes view controller in the main storyboard is no longer tightly coupled to a navigation controller. This increases the reusability of the ViewController classes.
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,13 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
-
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    // swiftlint:enable all
 
 }
-

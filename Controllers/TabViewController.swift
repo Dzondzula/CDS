@@ -7,7 +7,7 @@
 
 import UIKit
 //
-//class TabViewController: UITabBarController {
+// class TabViewController: UITabBarController {
 //
 //    weak var coordinator : MainCoordinator?
 //    let adminMemberCoordinator = AdminMembersCoordinator(navigationController: UINavigationController())
@@ -20,7 +20,7 @@ import UIKit
 //        trainingCoordinator.start()
 //
 //        let trainingVC = trainingCoordinator.navController
-//        let uid = Auth.auth().currentUser?.uid
+//        let uid = dataManager.currentUserUid
 //        let child = getDataManager.userInfoRef.child(uid!)//add to service
 //        child.child("isAdmin").observeSingleEvent(of: .value, with: { (snapshot) in
 //
@@ -53,7 +53,7 @@ import UIKit
 ////        trVC.tabBarItem = UITabBarItem(title: "Training", image: UIImage(named: "event")?.resize(28.0, 28.0), selectedImage: nil)
 //////        handle = Auth.auth().addStateDidChangeListener{error,user in
 //////            if user != nil{
-////        let uid = Auth.auth().currentUser?.uid
+////        let uid = dataManager.currentUserUid
 ////        let child = getDataManager.userInfoRef.child(uid!)//add to service
 ////        child.child("isAdmin").observeSingleEvent(of: .value, with: { (snapshot) in
 ////
@@ -71,7 +71,7 @@ import UIKit
 //    }
 //
 extension UIImage {
-    func resize(_ width: CGFloat, _ height:CGFloat) -> UIImage? {
+    func resize(_ width: CGFloat, _ height: CGFloat) -> UIImage? {
         let widthRatio  = width / size.width
         let heightRatio = height / size.height
         let ratio = widthRatio > heightRatio ? heightRatio : widthRatio
