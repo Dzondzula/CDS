@@ -14,11 +14,13 @@ class MemberInfoLayoutView: UIView {
     let nameLabel = UILabel()
     let profilePicture = UIImageView()
     let containerView = UIView()
-    let trainings = UIButton()
+    let changeTraining = UIButton()
+    let changeSubscription = UIButton()
     let paymentViewTitle = UILabel()
+    let stackView = UIStackView()
     let trainingPriceLabel = UILabel()
     let paymentStatusPicture = UIImageView()
-    let paymentStatusLabel = UILabel()
+    let subscriptionStatusLabel = UILabel()
 
 
     override init(frame: CGRect) {
@@ -43,25 +45,20 @@ class MemberInfoLayoutView: UIView {
 
 
     private func constraint() {
-        addConstrainedSubviews(containerView, paymentView, collectionView)
+        stackView.addArrangedSubview(changeTraining)
+        stackView.addArrangedSubview(changeSubscription)
         paymentView.addSubview(paymentViewTitle)
         paymentView.addSubview(paymentStatusPicture)
-        paymentView.addSubview(paymentStatusLabel)
         paymentView.addSubview(trainingPriceLabel)
         containerView.addSubview(profilePicture)
-        containerView.addSubview(trainings)
         containerView.addSubview(nameLabel)
+        containerView.addSubview(subscriptionStatusLabel)
+        containerView.addSubview(stackView)
+        addConstrainedSubviews(containerView, paymentView, collectionView)
 
 
-        paymentStatusPicture.translatesAutoresizingMaskIntoConstraints = false
-        paymentViewTitle.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        profilePicture.translatesAutoresizingMaskIntoConstraints = false
-        paymentStatusLabel.translatesAutoresizingMaskIntoConstraints = false
-        trainingPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        trainings.translatesAutoresizingMaskIntoConstraints = false
-
-
+        changeTraining.translatesAutoresizingMaskIntoConstraints = false
+        changeSubscription.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.leftAnchor.constraint(equalTo: leftAnchor),
@@ -77,16 +74,15 @@ class MemberInfoLayoutView: UIView {
             collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
             collectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1 / 4),
-            profilePicture.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            profilePicture.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
             profilePicture.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             profilePicture.widthAnchor.constraint(equalToConstant: 120),
             profilePicture.heightAnchor.constraint(equalToConstant: 120),
-            trainings.bottomAnchor.constraint(equalTo: profilePicture.topAnchor),
-            trainings.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -10),
-            trainings.heightAnchor.constraint(equalToConstant: 30),
+            stackView.topAnchor.constraint(equalTo: profilePicture.bottomAnchor, constant: 20),
+            stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
 
-            nameLabel.topAnchor.constraint(equalTo: profilePicture.bottomAnchor, constant: 20),
-            nameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: profilePicture.trailingAnchor, constant: 20),
+            nameLabel.topAnchor.constraint(equalTo: profilePicture.topAnchor),
 
             paymentViewTitle.topAnchor.constraint(equalTo: paymentView.topAnchor, constant: 20),
             paymentViewTitle.leftAnchor.constraint(equalTo: paymentView.leftAnchor, constant: 10),
@@ -96,39 +92,36 @@ class MemberInfoLayoutView: UIView {
 
             paymentStatusPicture.centerYAnchor.constraint(equalTo: paymentView.centerYAnchor),
             paymentStatusPicture.rightAnchor.constraint(equalTo: paymentView.rightAnchor, constant: -20),
-            paymentStatusPicture.widthAnchor.constraint(equalToConstant: 120),
-            paymentStatusPicture.heightAnchor.constraint(equalToConstant: 120),
+            paymentStatusPicture.widthAnchor.constraint(equalToConstant: 130),
+            paymentStatusPicture.heightAnchor.constraint(equalToConstant: 130),
 
-            paymentStatusLabel.topAnchor.constraint(equalTo: paymentStatusPicture.bottomAnchor, constant: 10),
-            paymentStatusLabel.rightAnchor.constraint(equalTo: paymentView.rightAnchor, constant: -10)
+           subscriptionStatusLabel.leadingAnchor.constraint(equalTo: profilePicture.trailingAnchor, constant: 20),
+            subscriptionStatusLabel.bottomAnchor.constraint(equalTo: profilePicture.bottomAnchor)
         ])
     }
 
     func configure() {
-
-
-        
+        self.backgroundColor = .gray
         collectionView.layer.cornerRadius = 13.0
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .white
 
-        containerView.backgroundColor = .black
+        containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 8.0
         containerView.layer.masksToBounds = true
 
         profilePicture.isUserInteractionEnabled = true
-        profilePicture.layer.cornerRadius = 120 / 2
+        profilePicture.layer.cornerRadius = 20
         profilePicture.backgroundColor = .brown
         profilePicture.image = UIImage(named: "CDS")
         profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
-        profilePicture.layer.borderWidth = 2
-        profilePicture.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
-
+        profilePicture.layer.borderWidth = 1
+        profilePicture.layer.borderColor = UIColor.lightGray.cgColor
 
         nameLabel.text = "Car Dušan Silni"
         nameLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-        nameLabel.textColor = .white
+        nameLabel.textColor = .darkText
         nameLabel.isUserInteractionEnabled = true
 
         paymentView.layer.cornerRadius = 13.0
@@ -153,10 +146,10 @@ class MemberInfoLayoutView: UIView {
         paymentViewTitle.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
 
 
-        paymentStatusLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        subscriptionStatusLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
 
-        paymentStatusLabel.text = "Nije placeno"
-        paymentStatusLabel.textColor = .white
+        subscriptionStatusLabel.text = "Nije placeno"
+        subscriptionStatusLabel.textColor = .gray
 
 
         trainingPriceLabel.font = UIFont(name: "Avenir", size: 30)
@@ -164,7 +157,31 @@ class MemberInfoLayoutView: UIView {
         trainingPriceLabel.textAlignment = .justified
         trainingPriceLabel.textColor = .white
 
-        trainings.setTitle("Change training", for: .normal)
+        var atributeContainer = AttributeContainer()
+        atributeContainer.font = UIFont.boldSystemFont(ofSize: 16)
+
+        var changeTrainingButtonConfig = UIButton.Configuration.tinted()
+        changeTrainingButtonConfig.attributedTitle = AttributedString("Change training", attributes: atributeContainer)
+        changeTrainingButtonConfig.cornerStyle = .capsule
+        changeTrainingButtonConfig.baseBackgroundColor = .gray
+        changeTrainingButtonConfig.baseForegroundColor = .darkText
+        changeTraining.configuration = changeTrainingButtonConfig
+
+
+        var changeSubsButtonConfig = UIButton.Configuration.filled()
+        changeSubsButtonConfig.image = UIImage(systemName: "dollarsign.circle")
+        changeSubsButtonConfig.attributedTitle = AttributedString("Subscription", attributes: atributeContainer)
+        changeSubsButtonConfig.cornerStyle = .capsule
+        changeSubsButtonConfig.baseBackgroundColor = .systemRed
+        changeSubsButtonConfig.baseForegroundColor = .white
+        changeSubsButtonConfig.imagePadding = 5
+        changeSubscription.configuration = changeSubsButtonConfig
+
+
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
+        stackView.alignment = .center
+        stackView.axis = .horizontal
     }
 }
 
@@ -172,6 +189,7 @@ class MemberInfoLayoutView: UIView {
 extension UIView {
     func addConstrainedSubview(_ view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         addSubview(view)
     }
 
@@ -179,3 +197,4 @@ extension UIView {
         views.forEach { view in addConstrainedSubview(view) }
     }
 }
+

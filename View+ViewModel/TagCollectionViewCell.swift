@@ -1,8 +1,9 @@
 import UIKit
-protocol SportTagCollectionHandler: UICollectionViewCell{
+protocol SportTagCollectionHandler: UICollectionViewCell {
     static var id : String { get }
 }
-class TagCollectionViewCell: UICollectionViewCell,SportTagCollectionHandler {
+
+class TagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
 
     static let id = "memberTrainingCell"
     override init(frame: CGRect) {
@@ -64,7 +65,7 @@ class CustomButton: UIButton {
     var row: Int = 0
 }
 
-class UserTagCollectionViewCell: UICollectionViewCell,SportTagCollectionHandler {
+class UserTagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
 static let id = "trainingCell"
     override init(frame: CGRect) {
 
@@ -143,7 +144,7 @@ class UserTagHandler: TagCellHandeler {
     }
 }
 
-class MemberTagHandler: TagCellHandeler{
+class MemberTagHandler: TagCellHandeler {
     var type: CoordinatorType = .member
 
     func collectionView(type: CoordinatorType, _ sport: String, _ collectionView: UICollectionView, cellForRowAt indexPath: IndexPath) -> UICollectionViewCell {

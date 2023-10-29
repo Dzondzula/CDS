@@ -58,10 +58,10 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
                    let endDate = dict["endDate"] as? String {
                     if isPaid == true {
                         memberViewLayout.paymentStatusPicture.image = UIImage(named: "paid")
-                        memberViewLayout.paymentStatusLabel.text = "Activated: \(String(describing: startDate))"
+                        memberViewLayout.subscriptionStatusLabel.text = "Activated: \(String(describing: startDate))"
                     } else {
                         memberViewLayout.paymentStatusPicture.image = UIImage(named: "unpaid")
-                        memberViewLayout.paymentStatusLabel.text = "Expired on: \(String(describing: endDate))"
+                        memberViewLayout.subscriptionStatusLabel.text = "Expired on: \(String(describing: endDate))"
                     }
                 }
             } else {
@@ -92,7 +92,7 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
         memberViewLayout.collectionView.delegate = self
         memberViewLayout.collectionView.dataSource = self
 
-        memberViewLayout.trainings.addTarget(self, action: #selector(editTraining), for: .touchUpInside)
+        memberViewLayout.changeTraining.addTarget(self, action: #selector(editTraining), for: .touchUpInside)
 
          let pictureTap = UITapGestureRecognizer(target: self, action: #selector(paymentTapped))
 memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
@@ -197,7 +197,7 @@ extension MemberInfoViewController: UICollectionViewDataSource, UICollectionView
         return arr.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingCell", for: indexPath) as! TagCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberTrainingCell", for: indexPath) as! TagCollectionViewCell
         cell.sportLabel.text = arr[indexPath.row]
 
         cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
@@ -247,7 +247,7 @@ extension MemberInfoViewController {
                                    "endDate": endString]
                        child2.updateChildValues(post)
                        memberViewLayout.paymentStatusPicture.image = UIImage(named: "paid")
-                       memberViewLayout.paymentStatusLabel.text = "Active until: \(endString)"
+                       memberViewLayout.subscriptionStatusLabel.text = "Active until: \(endString)"
 //                 let myQuery = child2.queryStarting(atValue: startString).queryEnding(atValue: endString)
 //                       myQuery.observeSingleEvent(of: .value, with: { snapshot in
 //                           for child in snapshot.children{
@@ -274,7 +274,7 @@ extension MemberInfoViewController {
                     formatter.dateFormat = "d, MMM yyyy"
                     let date = Date()
                     let today = formatter.string(from: date)
-                    memberViewLayout.paymentStatusLabel.text = "Expired: \(today)"
+                    memberViewLayout.subscriptionStatusLabel.text = "Expired: \(today)"
                 }
 
                 let post = ["isPaid": changed]

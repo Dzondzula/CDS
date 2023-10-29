@@ -271,7 +271,7 @@ class UserProfileViewController: UIViewController, UINavigationControllerDelegat
         let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
 
         let editBttn = editButtonItem
-        (coordinator?.rootViewController as! UINavigationController).navigationItem.rightBarButtonItems = [editBttn, signOutButton]
+        self.navigationItem.rightBarButtonItems = [editBttn, signOutButton]
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.navigationController?.isNavigationBarHidden = false
     }
@@ -409,3 +409,4 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         //return cell
     }
 }
+
