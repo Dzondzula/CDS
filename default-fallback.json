@@ -1,0 +1,1941 @@
+{
+  "radius" : {
+    "banner" : 0,
+    "card" : 4,
+    "virtualCatalog" : 4
+  },
+  "light" : {
+    "logosMode" : "COLOUR_LIGHT",
+    "colors" : [
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundBlurOverlay"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "backgroundCard"
+      },
+      {
+        "color" : "#EDEDED",
+        "hex" : "EDEDED",
+        "opacity" : 1,
+        "identifier" : "backgroundCardAlternate"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 0.75,
+        "identifier" : "backgroundCardOverlay"
+      },
+      {
+        "color" : "#0E1314",
+        "hex" : "0E1314",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundCoverOverlay"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.85000002384185791,
+        "identifier" : "backgroundOverlay"
+      },
+      {
+        "color" : "#11161A",
+        "hex" : "11161A",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundDim"
+      },
+      {
+        "color" : "#000010",
+        "hex" : "000010",
+        "opacity" : 0.40000000596046448,
+        "identifier" : "backgroundDimAlternate"
+      },
+      {
+        "color" : "#000004",
+        "hex" : "000004",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundDimSpinner"
+      },
+      {
+        "color" : "#FAFAFA",
+        "hex" : "FAFAFA",
+        "opacity" : 1,
+        "identifier" : "backgroundDropdown"
+      },
+      {
+        "color" : "#EBEBEB",
+        "hex" : "EBEBEB",
+        "opacity" : 1,
+        "identifier" : "backgroundDropdownAlternate"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "backgroundError"
+      },
+      {
+        "color" : "#323E43",
+        "hex" : "323E43",
+        "opacity" : 1,
+        "identifier" : "backgroundNav"
+      },
+      {
+        "color" : "#C10023",
+        "hex" : "C10023",
+        "opacity" : 1,
+        "identifier" : "backgroundNowTVArrow"
+      },
+      {
+        "color" : "#FAFAFA",
+        "hex" : "FAFAFA",
+        "opacity" : 1,
+        "identifier" : "backgroundModal"
+      },
+      {
+        "color" : "#FAFAFA",
+        "hex" : "FAFAFA",
+        "opacity" : 0.94999998807907104,
+        "identifier" : "backgroundModalAlternate"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 0.69999998807907104,
+        "identifier" : "backgroundOverlayProgress"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 1,
+        "identifier" : "backgroundPage"
+      },
+      {
+        "color" : "#E6E6E6",
+        "hex" : "E6E6E6",
+        "opacity" : 1,
+        "identifier" : "backgroundPageAlternate"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 1,
+        "identifier" : "backgroundPanel"
+      },
+      {
+        "color" : "#E6E6E6",
+        "hex" : "E6E6E6",
+        "opacity" : 1,
+        "identifier" : "backgroundPanelAlternate"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "backgroundPlain"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 1,
+        "identifier" : "backgroundPlainAlternate"
+      },
+      {
+        "color" : "#FEFEFE",
+        "hex" : "FEFEFE",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCard"
+      },
+      {
+        "color" : "#EDEDED",
+        "hex" : "EDEDED",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCardAlternate"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCardHeader"
+      },
+      {
+        "color" : "#0095DA",
+        "hex" : "0095DA",
+        "opacity" : 1,
+        "identifier" : "backgroundPrimary"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 1,
+        "identifier" : "backgroundProgress"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "backgroundProgressAlternate"
+      },
+      {
+        "color" : "#0095DB",
+        "hex" : "0095DB",
+        "opacity" : 1,
+        "identifier" : "backgroundProgressBar"
+      },
+      {
+        "color" : "#262A2D",
+        "hex" : "262A2D",
+        "opacity" : 0.25,
+        "identifier" : "backgroundProgressBarTransparent"
+      },
+      {
+        "color" : "#FCFCFC",
+        "hex" : "FCFCFC",
+        "opacity" : 1,
+        "identifier" : "backgroundSection"
+      },
+      {
+        "color" : "#D3D8DB",
+        "hex" : "D3D8DB",
+        "opacity" : 1,
+        "identifier" : "backgroundSkeletonBase"
+      },
+      {
+        "color" : "#29C9A5",
+        "hex" : "29C9A5",
+        "opacity" : 1,
+        "identifier" : "backgroundSubscribed"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 0.60000002384185791,
+        "identifier" : "iOSTabBar"
+      },
+      {
+        "color" : "#F9F9F9",
+        "hex" : "F9F9F9",
+        "opacity" : 0.77999997138977051,
+        "identifier" : "iOSTabBarEffect"
+      },
+      {
+        "color" : "#767680",
+        "hex" : "767680",
+        "opacity" : 0.11999999731779099,
+        "identifier" : "iOSSegPickerBackground"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.039999999105930328,
+        "identifier" : "iOSSegPickerStroke"
+      },
+      {
+        "color" : "#3C3C43",
+        "hex" : "3C3C43",
+        "opacity" : 0.36000001430511475,
+        "identifier" : "iOSHorizontalDivider"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "iOSSegPickerActive"
+      },
+      {
+        "color" : "#C0C8CC",
+        "hex" : "C0C8CC",
+        "opacity" : 1,
+        "identifier" : "elementButton"
+      },
+      {
+        "color" : "#475256",
+        "hex" : "475256",
+        "opacity" : 1,
+        "identifier" : "elementButtonActive"
+      },
+      {
+        "color" : "#475256",
+        "hex" : "475256",
+        "opacity" : 0.55000001192092896,
+        "identifier" : "elementButtonActiveTransparent"
+      },
+      {
+        "color" : "#475256",
+        "hex" : "475256",
+        "opacity" : 1,
+        "identifier" : "elementButtonSeasons"
+      },
+      {
+        "color" : "#E9E9E9",
+        "hex" : "E9E9E9",
+        "opacity" : 1,
+        "identifier" : "elementDivider"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "elementEventOverlayButton"
+      },
+      {
+        "color" : "#FFB156",
+        "hex" : "FFB156",
+        "opacity" : 1,
+        "identifier" : "elementTextLink1"
+      },
+      {
+        "color" : "#40DDD4",
+        "hex" : "40DDD4",
+        "opacity" : 1,
+        "identifier" : "elementTextLink2"
+      },
+      {
+        "color" : "#F85EFE",
+        "hex" : "F85EFE",
+        "opacity" : 1,
+        "identifier" : "elementTextLink3"
+      },
+      {
+        "color" : "#51EC76",
+        "hex" : "51EC76",
+        "opacity" : 1,
+        "identifier" : "elementTextLink4"
+      },
+      {
+        "color" : "#F5EC06",
+        "hex" : "F5EC06",
+        "opacity" : 1,
+        "identifier" : "elementTextLink5"
+      },
+      {
+        "color" : "#0068F4",
+        "hex" : "0068F4",
+        "opacity" : 1,
+        "identifier" : "elementTextLink6"
+      },
+      {
+        "color" : "#FF3450",
+        "hex" : "FF3450",
+        "opacity" : 1,
+        "identifier" : "elementTextLink7"
+      },
+      {
+        "color" : "#475256",
+        "hex" : "475256",
+        "opacity" : 1,
+        "identifier" : "iconsMissingLogo"
+      },
+      {
+        "color" : "#0095DA",
+        "hex" : "0095DA",
+        "opacity" : 1,
+        "identifier" : "textActive"
+      },
+      {
+        "color" : "#C10023",
+        "hex" : "C10023",
+        "opacity" : 1,
+        "identifier" : "textBadge"
+      },
+      {
+        "color" : "#707070",
+        "hex" : "707070",
+        "opacity" : 1,
+        "identifier" : "textBadgeFaded"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textBadgeFocus"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textBadgeRegular"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "textBadgeVideo"
+      },
+      {
+        "color" : "#475257",
+        "hex" : "475257",
+        "opacity" : 1,
+        "identifier" : "textButton"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textCard"
+      },
+      {
+        "color" : "#707070",
+        "hex" : "707070",
+        "opacity" : 1,
+        "identifier" : "textCardFaded"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "textError"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textEventOverlay"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 1,
+        "identifier" : "textEventOverlayFaded"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textEventOverlayInverse"
+      },
+      {
+        "color" : "#707070",
+        "hex" : "707070",
+        "opacity" : 1,
+        "identifier" : "textFaded"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textFocus"
+      },
+      {
+        "color" : "#A3A3A3",
+        "hex" : "A3A3A3",
+        "opacity" : 1,
+        "identifier" : "text"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textNav"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 1,
+        "identifier" : "textNavFaded"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textRegular"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textSelected"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 0.30000001192092896,
+        "identifier" : "textEventOverlayOpacity"
+      },
+      {
+        "color" : "#707070",
+        "hex" : "707070",
+        "opacity" : 0.20000000298023224,
+        "identifier" : "textCardFadedOpacity"
+      }
+    ],
+    "shadows" : [
+      {
+        "spread" : 0,
+        "radius" : 4,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "button",
+        "blur" : 0,
+        "opacity" : 0.75
+      },
+      {
+        "spread" : 5,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "card",
+        "blur" : 0,
+        "opacity" : 0.070000000298023224
+      },
+      {
+        "spread" : 10,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "cardFocused",
+        "blur" : 0,
+        "opacity" : 0.20000000298023224
+      },
+      {
+        "spread" : 5,
+        "radius" : 11,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "cardPlayer",
+        "blur" : 0,
+        "opacity" : 0.47999998927116394
+      },
+      {
+        "spread" : 0,
+        "radius" : 15,
+        "offset" : {
+          "x" : 0,
+          "y" : 3
+        },
+        "color" : "000000",
+        "identifier" : "floatingElement",
+        "blur" : 0,
+        "opacity" : 0.30000001192092896
+      },
+      {
+        "spread" : 0,
+        "radius" : 0,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "2D3234",
+        "identifier" : "navButton",
+        "blur" : 0,
+        "opacity" : 0
+      },
+      {
+        "spread" : 0,
+        "radius" : 0,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "2D3234",
+        "identifier" : "navButtonSelected",
+        "blur" : 0,
+        "opacity" : 0
+      },
+      {
+        "spread" : 0,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "regular",
+        "blur" : 0,
+        "opacity" : 0.10000000149011612
+      },
+      {
+        "spread" : 0,
+        "radius" : 3,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "000000",
+        "identifier" : "text",
+        "blur" : 0,
+        "opacity" : 0.75
+      },
+      {
+        "spread" : 0,
+        "radius" : 50,
+        "offset" : {
+          "x" : 0,
+          "y" : 29
+        },
+        "color" : "000000",
+        "identifier" : "focused",
+        "blur" : 0,
+        "opacity" : 0.25
+      },
+      {
+        "spread" : 0,
+        "radius" : 8,
+        "offset" : {
+          "x" : 0,
+          "y" : 3
+        },
+        "color" : "000000",
+        "identifier" : "segPickerShadow",
+        "blur" : 0,
+        "opacity" : 0.11999999731779099
+      }
+    ],
+    "textStyles" : [
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionLW2",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0.34999999403953552,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "actionLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW2",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW1",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionM2W0",
+        "fontFamily" : "ProximaNova",
+       "fontSize" : 16
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 16,
+        "identifier" : "actionSW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 16,
+        "identifier" : "actionSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 15,
+        "identifier" : "actionXSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXXLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXXLW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0.5,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.40999999642372131,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 15,
+        "identifier" : "bodyXSW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodyXXSW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 12,
+        "identifier" : "bodyXXSW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 11,
+        "identifier" : "bodyXXXSW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 9
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "cardXLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 19
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "cardLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "cardMW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "cardMW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "cardSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 13,
+        "identifier" : "mobileTabMW0",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 12,
+        "identifier" : "mobileTabSW0",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 36,
+        "identifier" : "titleXLW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 28
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 32,
+        "identifier" : "titleLW1",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 24
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 32,
+        "identifier" : "titleLW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 24
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "titleMW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "titleMW3",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 21,
+        "identifier" : "titleSW1",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 21,
+        "identifier" : "titleSW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionM2W0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 16
+      }
+    ],
+    "cardLogosMode" : "COLOUR_LIGHT",
+    "blurs" : [
+      {
+        "color" : "backgroundNav",
+        "blurEffect" : "dark",
+        "identifier" : "blurTopNav"
+      },
+      {
+        "color" : "iOSTabBar",
+        "blurEffect" : "dark",
+        "identifier" : "blurTabBarEffect"
+      }
+    ],
+    "identifier" : "Default-Light",
+    "landingPageHighlight" : "COLOUR_LIGHT",
+    "coBrandingLogoType" : "COLOUR_LIGHT"
+  },
+  "dark" : {
+    "logosMode" : "COLOUR_DARK",
+    "colors" : [
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundBlurOverlay"
+      },
+      {
+        "color" : "#323C44",
+        "hex" : "323C44",
+        "opacity" : 1,
+        "identifier" : "backgroundCard"
+      },
+      {
+        "color" : "#434E5C",
+        "hex" : "434E5C",
+        "opacity" : 1,
+        "identifier" : "backgroundCardAlternate"
+      },
+      {
+        "color" : "#1E262D",
+        "hex" : "1E262D",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundCardOverlay"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundCoverOverlay"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.85000002384185791,
+        "identifier" : "backgroundOverlay"
+      },
+      {
+        "color" : "#11161A",
+        "hex" : "11161A",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundDim"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.64999997615814209,
+        "identifier" : "backgroundDimAlternate"
+      },
+      {
+        "color" : "#000004",
+        "hex" : "000004",
+        "opacity" : 0.80000001192092896,
+        "identifier" : "backgroundDimSpinner"
+      },
+      {
+        "color" : "#11161A",
+        "hex" : "11161A",
+        "opacity" : 1,
+        "identifier" : "backgroundDropdown"
+      },
+      {
+        "color" : "#293640",
+        "hex" : "293640",
+        "opacity" : 1,
+        "identifier" : "backgroundDropdownAlternate"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "backgroundError"
+      },
+      {
+        "color" : "#2D383D",
+        "hex" : "2D383D",
+        "opacity" : 1,
+        "identifier" : "backgroundNav"
+      },
+      {
+        "color" : "#C10023",
+        "hex" : "C10023",
+        "opacity" : 1,
+        "identifier" : "backgroundNowTVArrow"
+      },
+      {
+        "color" : "#11161A",
+        "hex" : "11161A",
+        "opacity" : 1,
+        "identifier" : "backgroundModal"
+      },
+      {
+        "color" : "#11161A",
+        "hex" : "11161A",
+        "opacity" : 0.94999998807907104,
+        "identifier" : "backgroundModalAlternate"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 0.69999998807907104,
+        "identifier" : "backgroundOverlayProgress"
+      },
+      {
+        "color" : "#171E24",
+        "hex" : "171E24",
+        "opacity" : 1,
+        "identifier" : "backgroundPage"
+      },
+      {
+        "color" : "#212B32",
+        "hex" : "212B32",
+        "opacity" : 1,
+        "identifier" : "backgroundPageAlternate"
+      },
+      {
+        "color" : "#171E24",
+        "hex" : "171E24",
+        "opacity" : 1,
+        "identifier" : "backgroundPanel"
+      },
+      {
+        "color" : "#252D32",
+        "hex" : "252D32",
+        "opacity" : 1,
+        "identifier" : "backgroundPanelAlternate"
+      },
+      {
+        "color" : "#171E24",
+        "hex" : "171E24",
+        "opacity" : 1,
+        "identifier" : "backgroundPlain"
+      },
+      {
+        "color" : "#1E272E",
+        "hex" : "1E272E",
+        "opacity" : 1,
+        "identifier" : "backgroundPlainAlternate"
+      },
+      {
+        "color" : "#1C242B",
+        "hex" : "1C242B",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCard"
+      },
+      {
+        "color" : "#252F38",
+        "hex" : "252F38",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCardAlternate"
+      },
+      {
+        "color" : "#1C242B",
+        "hex" : "1C242B",
+        "opacity" : 1,
+        "identifier" : "backgroundPopupCardHeader"
+      },
+      {
+        "color" : "#0095DA",
+        "hex" : "0095DA",
+        "opacity" : 1,
+        "identifier" : "backgroundPrimary"
+      },
+      {
+        "color" : "#616161",
+        "hex" : "616161",
+        "opacity" : 1,
+        "identifier" : "backgroundProgress"
+      },
+      {
+        "color" : "#9E9E9E",
+        "hex" : "9E9E9E",
+        "opacity" : 1,
+        "identifier" : "backgroundProgressAlternate"
+      },
+      {
+        "color" : "#0095DB",
+        "hex" : "0095DB",
+        "opacity" : 1,
+        "identifier" : "backgroundProgressBar"
+      },
+      {
+        "color" : "#818B8E",
+        "hex" : "818B8E",
+        "opacity" : 0.25,
+        "identifier" : "backgroundProgressBarTransparent"
+      },
+      {
+        "color" : "#1C242B",
+        "hex" : "1C242B",
+        "opacity" : 1,
+        "identifier" : "backgroundSection"
+      },
+      {
+        "color" : "#222C34",
+        "hex" : "222C34",
+        "opacity" : 1,
+        "identifier" : "backgroundSkeletonBase"
+      },
+      {
+        "color" : "#29C9A5",
+        "hex" : "29C9A5",
+        "opacity" : 1,
+        "identifier" : "backgroundSubscribed"
+      },
+      {
+        "color" : "#171E24",
+        "hex" : "171E24",
+        "opacity" : 0.60000002384185791,
+        "identifier" : "iOSTabBar"
+      },
+      {
+        "color" : "#252525",
+        "hex" : "252525",
+        "opacity" : 0.77999997138977051,
+        "identifier" : "iOSTabBarEffect"
+      },
+      {
+        "color" : "#767680",
+        "hex" : "767680",
+        "opacity" : 0.23999999463558197,
+        "identifier" : "iOSSegPickerBackground"
+      },
+      {
+        "color" : "#000000",
+        "hex" : "000000",
+        "opacity" : 0.039999999105930328,
+        "identifier" : "iOSSegPickerStroke"
+      },
+      {
+        "color" : "#545458",
+        "hex" : "545458",
+        "opacity" : 0.64999997615814209,
+        "identifier" : "iOSHorizontalDivider"
+      },
+      {
+        "color" : "#636366",
+        "hex" : "636366",
+        "opacity" : 1,
+        "identifier" : "iOSSegPickerActive"
+      },
+      {
+        "color" : "#2C3A47",
+        "hex" : "2C3A47",
+        "opacity" : 1,
+        "identifier" : "elementButton"
+      },
+      {
+        "color" : "#475461",
+        "hex" : "475461",
+        "opacity" : 1,
+        "identifier" : "elementButtonActive"
+      },
+      {
+        "color" : "#3D4854",
+        "hex" : "3D4854",
+        "opacity" : 1,
+        "identifier" : "elementButtonSeasons"
+      },
+      {
+        "color" : "#2B3640",
+        "hex" : "2B3640",
+        "opacity" : 1,
+        "identifier" : "elementDivider"
+      },
+      {
+        "color" : "#475461",
+        "hex" : "475461",
+        "opacity" : 0.55000001192092896,
+        "identifier" : "elementButtonActiveTransparent"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "elementEventOverlayButton"
+      },
+      {
+        "color" : "#FFB156",
+        "hex" : "FFB156",
+        "opacity" : 1,
+        "identifier" : "elementTextLink1"
+      },
+      {
+        "color" : "#40DDD4",
+        "hex" : "40DDD4",
+        "opacity" : 1,
+        "identifier" : "elementTextLink2"
+      },
+      {
+        "color" : "#F85EFE",
+        "hex" : "F85EFE",
+        "opacity" : 1,
+        "identifier" : "elementTextLink3"
+      },
+      {
+        "color" : "#51EC76",
+        "hex" : "51EC76",
+        "opacity" : 1,
+        "identifier" : "elementTextLink4"
+      },
+      {
+        "color" : "#F5EC06",
+        "hex" : "F5EC06",
+        "opacity" : 1,
+        "identifier" : "elementTextLink5"
+      },
+      {
+        "color" : "#0068F4",
+        "hex" : "0068F4",
+        "opacity" : 1,
+        "identifier" : "elementTextLink6"
+      },
+      {
+        "color" : "#FF3450",
+        "hex" : "FF3450",
+        "opacity" : 1,
+        "identifier" : "elementTextLink7"
+      },
+      {
+        "color" : "#ADB4B8",
+        "hex" : "ADB4B8",
+        "opacity" : 1,
+        "identifier" : "iconsMissingLogo"
+      },
+      {
+        "color" : "#0095DA",
+        "hex" : "0095DA",
+        "opacity" : 1,
+        "identifier" : "textActive"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "textBadge"
+      },
+      {
+        "color" : "#898989",
+        "hex" : "898989",
+        "opacity" : 1,
+        "identifier" : "textBadgeFaded"
+      },
+      {
+        "color" : "#FEFEFE",
+        "hex" : "FEFEFE",
+        "opacity" : 1,
+        "identifier" : "textBadgeFocus"
+      },
+      {
+        "color" : "#F2F2F2",
+        "hex" : "F2F2F2",
+        "opacity" : 1,
+        "identifier" : "textBadgeRegular"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "textBadgeVideo"
+      },
+      {
+        "color" : "#E8E8E8",
+        "hex" : "E8E8E8",
+        "opacity" : 1,
+        "identifier" : "textButton"
+      },
+      {
+        "color" : "#F2F2F2",
+        "hex" : "F2F2F2",
+        "opacity" : 1,
+        "identifier" : "textCard"
+      },
+      {
+        "color" : "#A6A4A4",
+        "hex" : "A6A4A4",
+        "opacity" : 1,
+        "identifier" : "textCardFaded"
+      },
+      {
+        "color" : "#EF5F68",
+        "hex" : "EF5F68",
+        "opacity" : 1,
+        "identifier" : "textError"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textEventOverlay"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 1,
+        "identifier" : "textEventOverlayFaded"
+      },
+      {
+        "color" : "#202020",
+        "hex" : "202020",
+        "opacity" : 1,
+        "identifier" : "textEventOverlayInverse"
+      },
+      {
+        "color" : "#898989",
+        "hex" : "898989",
+        "opacity" : 1,
+        "identifier" : "textFaded"
+      },
+      {
+        "color" : "#FEFEFE",
+        "hex" : "FEFEFE",
+        "opacity" : 1,
+        "identifier" : "textFocus"
+      },
+      {
+        "color" : "#9D9B9B",
+        "hex" : "9D9B9B",
+        "opacity" : 1,
+        "identifier" : "text"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textNav"
+      },
+      {
+        "color" : "#D1D1D1",
+        "hex" : "D1D1D1",
+        "opacity" : 1,
+        "identifier" : "textNavFaded"
+      },
+      {
+        "color" : "#F2F2F2",
+        "hex" : "F2F2F2",
+        "opacity" : 1,
+        "identifier" : "textRegular"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 1,
+        "identifier" : "textSelected"
+      },
+      {
+        "color" : "#FFFFFF",
+        "hex" : "FFFFFF",
+        "opacity" : 0.30000001192092896,
+        "identifier" : "textEventOverlayOpacity"
+      },
+      {
+        "color" : "#A6A4A4",
+        "hex" : "A6A4A4",
+        "opacity" : 0.20000000298023224,
+        "identifier" : "textCardFadedOpacity"
+      }
+    ],
+    "shadows" : [
+      {
+        "spread" : 0,
+        "radius" : 4,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "button",
+        "blur" : 0,
+        "opacity" : 0.75
+      },
+      {
+        "spread" : 5,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "card",
+        "blur" : 0,
+        "opacity" : 0.10000000149011612
+      },
+      {
+        "spread" : 10,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "cardFocused",
+        "blur" : 0,
+        "opacity" : 0.20000000298023224
+      },
+      {
+        "spread" : 5,
+        "radius" : 11,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "cardPlayer",
+        "blur" : 0,
+        "opacity" : 0.47999998927116394
+      },
+      {
+        "spread" : 0,
+        "radius" : 15,
+        "offset" : {
+          "x" : 0,
+          "y" : 3
+        },
+        "color" : "000000",
+        "identifier" : "floatingElement",
+        "blur" : 0,
+        "opacity" : 0.30000001192092896
+      },
+      {
+        "spread" : 0,
+        "radius" : 50,
+        "offset" : {
+          "x" : 0,
+          "y" : 29
+        },
+        "color" : "000000",
+        "identifier" : "focused",
+        "blur" : 0,
+        "opacity" : 0.25
+      },
+      {
+        "spread" : 0,
+        "radius" : 0,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "2D3234",
+        "identifier" : "navButton",
+        "blur" : 0,
+        "opacity" : 0
+      },
+      {
+        "spread" : 0,
+        "radius" : 0,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "2D3234",
+        "identifier" : "navButtonSelected",
+        "blur" : 0,
+        "opacity" : 0
+      },
+      {
+        "spread" : 0,
+        "radius" : 12,
+        "offset" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "color" : "000000",
+        "identifier" : "regular",
+        "blur" : 0,
+        "opacity" : 0.10000000149011612
+      },
+      {
+        "spread" : 0,
+        "radius" : 3,
+        "offset" : {
+          "x" : 0,
+          "y" : 1
+        },
+        "color" : "000000",
+        "identifier" : "text",
+        "blur" : 0,
+        "opacity" : 0.75
+      },
+      {
+        "spread" : 0,
+        "radius" : 8,
+        "offset" : {
+          "x" : 0,
+          "y" : 3
+        },
+        "color" : "000000",
+        "identifier" : "segPickerShadow",
+        "blur" : 0,
+        "opacity" : 0
+      }
+    ],
+    "textStyles" : [
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionLW2",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0.34999999403953552,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "actionLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW2",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionMW1",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionM2W0",
+        "fontFamily" : "ProximaNova",
+       "fontSize" : 16
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 16,
+        "identifier" : "actionSW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 16,
+        "identifier" : "actionSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 15,
+        "identifier" : "actionXSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXXLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXXLW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0.5,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "bodyXLW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 18,
+        "identifier" : "bodyLW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 15
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.40999999642372131,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "bodyMW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodySW2",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 15,
+        "identifier" : "bodyXSW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "bodyXXSW0",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 12,
+        "identifier" : "bodyXXSW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 11,
+        "identifier" : "bodyXXXSW3",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 9
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "cardXLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 19
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "cardLW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "cardMW1",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "cardMW0",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 14
+      },
+      {
+        "letterSpacing" : 0.15000000596046448,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 17,
+        "identifier" : "cardSW0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 12
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 13,
+        "identifier" : "mobileTabMW0",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 13
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 12,
+        "identifier" : "mobileTabSW0",
+        "fontFamily" : "ProximaNova-Medium",
+        "fontSize" : 10
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 36,
+        "identifier" : "titleXLW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 28
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 32,
+        "identifier" : "titleLW1",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 24
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 32,
+        "identifier" : "titleLW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 24
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "titleMW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 24,
+        "identifier" : "titleMW3",
+        "fontFamily" : "ProximaNova-Regular",
+        "fontSize" : 20
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 21,
+        "identifier" : "titleSW1",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 21,
+        "identifier" : "titleSW0",
+        "fontFamily" : "ProximaNova-Bold",
+        "fontSize" : 17
+      },
+      {
+        "letterSpacing" : 0,
+        "paragraphSpacing" : 0,
+        "lineHeight" : 20,
+        "identifier" : "actionM2W0",
+        "fontFamily" : "ProximaNova-Semibold",
+        "fontSize" : 16
+      }
+    ],
+    "cardLogosMode" : "COLOUR_DARK",
+    "blurs" : [
+      {
+        "color" : "backgroundNav",
+        "blurEffect" : "dark",
+        "identifier" : "blurTopNav"
+      },
+      {
+        "color" : "iOSTabBar",
+        "blurEffect" : "dark",
+        "identifier" : "blurTabBarEffect"
+      }
+    ],
+    "identifier" : "Default-Dark",
+    "landingPageHighlight" : "COLOUR_DARK",
+    "coBrandingLogoType" : "COLOUR_DARK"
+  },
+  "platform" : "MOBILE",
+  "identifier" : "[EON Library] App Default - exported.json",
+  "iconFont" : "eon-icon",
+  "version" : "1.0.0"
+}
