@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="5376" identifier="iOS"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrainingProgress" customModule="MyFirebase" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrainingChartView" customModule="MyFirebase" customModuleProvider="target">
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="counter">
                     <integer key="value" value="1"/>
@@ -21,10 +21,6 @@
                     <color key="value" systemColor="systemBrownColor"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="label" destination="7Pd-Sq-Pma" id="zpX-Qy-CoK"/>
-                <outlet property="monthlyEnteryLabel" destination="ocP-0P-VnP" id="3B5-IK-7tX"/>
-            </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="TrainingProgress" customModule="MyFirebase" customModuleProvider="target">
@@ -35,11 +31,19 @@
                     <rect key="frame" x="161" y="139.5" width="71" height="41"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" systemColor="tintColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="71" id="9fe-Us-ikm"/>
+                        <constraint firstAttribute="height" constant="41" id="pck-H0-Sr2"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This month:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pd-Sq-Pma">
-                    <rect key="frame" x="151.5" y="110.5" width="90" height="20.5"/>
+                    <rect key="frame" x="151.5" y="109" width="90" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="b4I-Xa-lFJ"/>
+                        <constraint firstAttribute="width" constant="90" id="s80-Gj-We4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,17 +52,23 @@
             <viewLayoutGuide key="safeArea" id="HWE-fU-PFW"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <accessibility key="accessibilityConfiguration">
-                <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                <accessibilityTraits key="traits" updatesFrequently="YES"/>
             </accessibility>
             <constraints>
-                <constraint firstItem="ocP-0P-VnP" firstAttribute="top" secondItem="7Pd-Sq-Pma" secondAttribute="bottom" constant="8.6666666666666572" id="6XU-KT-SwU"/>
-                <constraint firstItem="7Pd-Sq-Pma" firstAttribute="centerX" secondItem="ocP-0P-VnP" secondAttribute="centerX" id="NJd-kZ-JVW"/>
-                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerX" secondItem="HWE-fU-PFW" secondAttribute="centerX" id="egm-d0-KUm"/>
-                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerY" secondItem="HWE-fU-PFW" secondAttribute="centerY" id="uQ1-mm-7Cr"/>
+                <constraint firstItem="ocP-0P-VnP" firstAttribute="top" secondItem="7Pd-Sq-Pma" secondAttribute="bottom" constant="8.5" id="5HL-3l-MTf"/>
+                <constraint firstItem="7Pd-Sq-Pma" firstAttribute="centerX" secondItem="ocP-0P-VnP" secondAttribute="centerX" id="Vhe-py-aX8"/>
+                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="egm-d0-KUm"/>
+                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="10" id="uQ1-mm-7Cr"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="label" destination="ocP-0P-VnP" id="6gT-jK-qah"/>
+                <outlet property="labelCenterX" destination="egm-d0-KUm" id="CoS-md-Hgh"/>
+                <outlet property="labelCenterY" destination="uQ1-mm-7Cr" id="w8s-gu-UvG"/>
+                <outlet property="monthlyEnteryLabel" destination="7Pd-Sq-Pma" id="gbH-IF-fSH"/>
+            </connections>
             <point key="canvasLocation" x="140" y="21"/>
         </view>
     </objects>
