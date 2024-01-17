@@ -16,8 +16,8 @@ class LogInViewController: UIViewController, Storyboarded {
     var indicator = UIActivityIndicatorView()
     let broj = 2_567
     @IBOutlet weak var forgot: UIButton!
-    @IBOutlet weak var register: Button!
-    @IBOutlet weak var login: Button!
+    @IBOutlet weak var register: LoginButton!
+    @IBOutlet weak var login: LoginButton!
     @IBOutlet weak var username: StyleTextField!
     @IBOutlet weak var password: StyleTextField!
     override func viewDidLoad() {

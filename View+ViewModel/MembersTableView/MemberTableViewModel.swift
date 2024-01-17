@@ -26,7 +26,7 @@ class MemberTableViewModel {
 
     func training(for index: Int) -> String? {
         let user = members[index]
-        guard let userT = user.training else {return nil}
+        guard let userT = user.trainings else {return nil}
         return userT.first
     }
 
@@ -78,7 +78,7 @@ struct MemberCellViewModel: MembersRepresentable {
     }
 
     var trainings: [String] {
-        return user.training ?? [""]
+        return user.trainings ?? [""]
     }
 }
 

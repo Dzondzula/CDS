@@ -18,6 +18,8 @@ disabled_rules:
   - explicit_acl
   - explicit_enum_raw_value # Rationale: Heavy handed in telling someone how to code
   - void_return
+  - trailing_whitespace
+  - switch_case_alignment
 
 
 

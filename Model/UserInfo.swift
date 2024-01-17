@@ -16,7 +16,7 @@ struct UserInfo {
     let lastName: String
     let username: String
     let pictureURL: String?
-    let training: [String]?
+    let trainings: [String]?
     let Payments: PaymentsData?
     let uid: String
     let admin: Bool
@@ -28,7 +28,7 @@ struct UserInfo {
         self.lastName = lastName
         self.username = username
         self.pictureURL = pictureURL
-        self.training = training
+        self.trainings = training
         self.Payments = Payments
         self.uid = uid
         self.admin = admin
@@ -56,7 +56,7 @@ struct UserInfo {
         self.lastName = lastName
         self.username = username
         self.pictureURL = profilePic
-        self.training = training
+        self.trainings = training
         self.Payments = payments
         self.uid = uid
         self.admin = admin
@@ -68,7 +68,7 @@ struct UserInfo {
             "lastName": lastName,
             "username": username,
             "pictureURL": pictureURL as Any,
-            "Training": training as Any,
+            "Training": trainings as Any,
             "uid": uid,
             "isAdmin": admin
         ]

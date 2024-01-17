@@ -30,6 +30,7 @@ class Row {
 }
 
 class TagFlowLayout: UICollectionViewFlowLayout {
+
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let attributes = super.layoutAttributesForElements(in: rect) else {
             return nil

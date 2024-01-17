@@ -14,7 +14,11 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
 
     var dataManager: ClientManager!
     weak var coordinator: AdminMembersCoordinator?
-    var arr: [String] = []
+    var trainingArray: [String] = [] {
+        didSet {
+            trainingArray.sort { $0.count > $1.count }
+        }
+    }
     var detailItem: UserInfo?
     var checkboxDialogViewController: CheckboxDialogViewController!
 
@@ -28,19 +32,20 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
     override func loadView() {
 
         // self.navigationItem.setHidesBackButton(true, animated: true)
-       view = memberViewLayout
-        memberViewLayout.collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.id)
+       view = DetailsView()
+//        MemberInfoSwiftUI(data: "")
+//        var memberDetailsView = MemberDetailsView()
+        memberViewLayout.tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.id)
 
         guard let detailItem = detailItem else {
             return
         }
 
-            memberViewLayout.nameLabel.text = detailItem.username
-
+        memberViewLayout.trainingChartView.trainingProgress.monthlyEnteryLabel.text = "3/31"
         DispatchQueue.main.async {
-            guard let training = detailItem.training else {return }
-            self.arr = training
-            self.memberViewLayout.collectionView.reloadData()
+            guard let trainings = detailItem.trainings else {return }
+            self.trainingArray = trainings
+            self.memberViewLayout.tagCollectionView.reloadData()
         }
 
         if let picture = detailItem.pictureURL,
@@ -80,7 +85,7 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
         child2.child("Price").observeSingleEvent(of: .value, with: { [self](snapshot) in
             if snapshot.exists() {
                 let data = snapshot.value as! Int
-                memberViewLayout.trainingPriceLabel.text = "\(data),00 RSD"
+                memberViewLayout.trainingChartView.trainingPriceQuantitiy.text = "\(data),00 RSD"
             }
         })
     }
@@ -89,13 +94,14 @@ class MemberInfoViewController: UIViewController, CheckboxDialogViewDelegate {
         super.viewDidLoad()
         let editTrainingg = UIBarButtonItem(title: "Training", style: .plain, target: self, action: #selector(editTraining))
         coordinator?.rootViewController.navigationItem.rightBarButtonItem = editTrainingg
-        memberViewLayout.collectionView.delegate = self
-        memberViewLayout.collectionView.dataSource = self
+        memberViewLayout.tagCollectionView.delegate = self
+        memberViewLayout.tagCollectionView.dataSource = self
+        self.memberViewLayout.tagCollectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
 
         memberViewLayout.changeTraining.addTarget(self, action: #selector(editTraining), for: .touchUpInside)
 
          let pictureTap = UITapGestureRecognizer(target: self, action: #selector(paymentTapped))
-memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
+memberViewLayout.changeSubscription.addGestureRecognizer(pictureTap)
     }
 
 
@@ -121,12 +127,12 @@ memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
 
     func onCheckboxPickerValueChange(_ component: DialogCheckboxViewEnum, values: TranslationDictionary) {
         let myKeys: [String] = values.map { String($0.key) }
-        let combined = Array(Set(myKeys + arr))
-        arr = combined
+        let combined = Array(Set(myKeys + trainingArray))
+        trainingArray = combined
         let unpaid: Bool = false
 
         let sum = values.compactMap { Int($0.value) }.reduce(0, +)
-        memberViewLayout.trainingPriceLabel.text = "\(sum),00 RSD"
+        memberViewLayout.trainingChartView.trainingPriceQuantitiy.text = "\(sum),00 RSD"
 
         guard let detailItem = detailItem else {
             return
@@ -134,7 +140,7 @@ memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
 
         let ref = ClientManager.userInfoRef.child(detailItem.uid)
         DispatchQueue.global(qos: .background).async { [self] in
-            let post = ["Training": arr]
+            let post = ["Training": trainingArray]
             ref.updateChildValues(post)
             let ref2 = ref.child("Payments")
             let post2 = ["isPaid": unpaid]
@@ -144,19 +150,13 @@ memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
             ref2.updateChildValues(post3)
         }
 
-        memberViewLayout.collectionView.reloadData()
+        memberViewLayout.tagCollectionView.reloadData()
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: true)
         if editing {
         }
-    }
-    func roundCorners(view: UIView, corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        view.layer.mask = mask
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -186,7 +186,7 @@ memberViewLayout.paymentStatusPicture.addGestureRecognizer(pictureTap)
 extension MemberInfoViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return  CGSize(width: arr[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23)]).width + 40, height: 40)
+        return  CGSize(width: trainingArray[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23)]).width + 40, height: 40)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfSections section: Int) -> Int {
@@ -194,31 +194,70 @@ extension MemberInfoViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arr.count
+        return trainingArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberTrainingCell", for: indexPath) as! TagCollectionViewCell
-        cell.sportLabel.text = arr[indexPath.row]
+        cell.sportLabel.text = trainingArray[indexPath.row]
 
         cell.deleteButton.layer.setValue(indexPath.row, forKey: "index")
         cell.deleteButton.addTarget(self, action: #selector(deleteTapped(_:)), for: .touchUpInside)
 
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionHeader
+            sectionHeader.label.text = "SPORTS"
+            return sectionHeader
+        } else { //No footer in this case but can add option for that
+            return UICollectionReusableView()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 0, height: UIFont.labelFontSize)
+    }
+
+    }
+
+class SectionHeader: UICollectionReusableView {
+    var label: UILabel = {
+        let label: UILabel = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.sizeToFit()
+        return label
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension MemberInfoViewController {
     @objc func deleteTapped(_ sender: UIButton) {
         guard let index: Int = (sender.layer.value(forKey: "index")) as? Int else {return}
-        arr.remove(at: index)
+        trainingArray.remove(at: index)
         guard let detailItem = detailItem else {
             return
         }
 
         let ref = ClientManager.userInfoRef.child(detailItem.uid)
-        let post = ["Training": arr]
+        let post = ["Training": trainingArray]
         ref.updateChildValues(post)
-        memberViewLayout.collectionView.reloadData()
+        memberViewLayout.tagCollectionView.reloadData()
     }
 
     @objc func paymentTapped() {
@@ -291,6 +330,7 @@ extension MemberInfoViewController {
         let a = calendar.dateComponents([.second], from: date1, to: date2)
         return a.value(for: .second)!
     }
+
     @objc func updatePayment() {
 
         let value: Bool = false
@@ -313,5 +353,14 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension UIView {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }

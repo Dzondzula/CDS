@@ -19,25 +19,15 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
     var array: [TrainingInfo] = []
     weak var coordinator: Coordinator!
 
-    func onCheckboxPickerValueChanged(_ trainingType: String, _ time: String) {
-        let chooseDay = UIAlertController(title: "Add training", message: "Choose day", preferredStyle: .actionSheet)
+    func onCheckboxPickerValueChanged(_ trainingType: String, _ time: String, day: (name: String, index: Int)) {
 
-        for (index, weekdays) in sections.enumerated() {
-            chooseDay.addAction(UIAlertAction(title: weekdays.weekDay.rawValue, style: .default) {[weak self]_ in
-                guard let self = self else {return}
-                let newTraining = TrainingInfo(title: trainingType, image: trainingType, time: time)
+        let newTraining = TrainingInfo(title: trainingType, image: trainingType, time: time)
 
-                ClientManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).child("sport\(weekdays.training.count)").updateChildValues(["name": "\(trainingType)",
-                    "time": time])
-                self.sections[index].training.append(newTraining)
-                let indexPath = IndexPath(item: 0, section: 0)
-                self.collectionView.insertItems(at: [indexPath])
-            })
-        }
-        let cancle = UIAlertAction(title: "Cancel", style: .destructive)
-        cancle.setValue(UIColor.red, forKey: "titleTextColor")
-        chooseDay.addAction(cancle)
-        present(chooseDay, animated: true)
+        ClientManager.trainingScheduleRef.child(day.name).child("sport\(sections[day.index].training.count)").updateChildValues(["name": "\(trainingType)",
+                                                                                                                                 "time": time])
+        self.sections[day.index].training.append(newTraining)
+        let indexPath = IndexPath(item: 0, section: 0)
+        self.collectionView.insertItems(at: [indexPath])
     }
 
     enum NetworkError: Error {
@@ -53,7 +43,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
 
             let data = snapshot.value as? Bool
             if data == true {
-                self.navigationItem.rightBarButtonItems = [addTraining]
+                self.navigationItem.rightBarButtonItems = [addTraining, self.editButtonItem]
                 // self.navigationController?.hidesBarsOnSwipe = true
             } else {
                 self.tabBarController!.navigationItem.rightBarButtonItems = []
@@ -64,7 +54,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
 
     func fetch(completion: @escaping (Result<TrainingSections, NetworkError>) -> Void) {
         for (index, weekdays) in sections.enumerated() {
-            ClientManager.trainingScheduleRef.child(weekdays.weekDay.rawValue).observeSingleEvent(of: .value) { snapshot, _ in
+            ClientManager.trainingScheduleRef.child(weekdays.weekDay.description).observeSingleEvent(of: .value) { snapshot, _ in
 
                 var newArray: [TrainingInfo] = []
                 if  let dict = snapshot.value as? [String: [String: Any]] {
@@ -109,7 +99,7 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundColor = .purple
+        collectionView.backgroundColor = .systemGray6
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: cellId)
         let layout = UICollectionViewFlowLayout()
         //                layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
@@ -143,20 +133,33 @@ class TrainingViewController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sections.count
     }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CustomCell
 
         cell.section = sections[indexPath.item]
+        cell.isEditing = isEditing
 
         return cell
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        collectionView.allowsMultipleSelection = editing
+        collectionView.allowsMultipleSelectionDuringEditing = true
+        collectionView.isEditing = editing
+        collectionView.indexPathsForVisibleItems.forEach { (indexPath) in
+            let cell = collectionView.cellForItem(at: indexPath) as! CustomCell
+            cell.isEditing = editing
+        }
     }
 
     @objc func addTraining() {
 
         self.dialogViewController = DialogViewController()
-        self.dialogViewController.titleDialog = "Sports"
+        self.dialogViewController.titleDialog = "Add training"
         self.dialogViewController.delegateDialogViews = self
-        self.dialogViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.dialogViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         self.present(self.dialogViewController, animated: false, completion: nil)
     }
 }

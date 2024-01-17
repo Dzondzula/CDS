@@ -197,7 +197,7 @@ class UserProfileViewController: UIViewController, UINavigationControllerDelegat
             self.nameLabel.text = self.informations[0].username
 
             DispatchQueue.main.async {
-                guard let training = self.informations[0].training else {return }
+                guard let training = self.informations[0].trainings else {return }
                 self.arr = training
                 self.collectionView.reloadData()
             }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Button: UIButton {
+class LoginButton: UIButton {
 
     var originalButtonText: String?
     var activityIndicator: UIActivityIndicatorView!

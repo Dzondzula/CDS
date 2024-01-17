@@ -23,12 +23,11 @@
             </userDefinedRuntimeAttributes>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="TrainingProgress" customModule="MyFirebase" customModuleProvider="target">
+        <view userInteractionEnabled="NO" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="TrainingProgress" customModule="MyFirebase" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" sizingRule="oversize" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocP-0P-VnP">
-                    <rect key="frame" x="161" y="139.5" width="71" height="41"/>
+                    <rect key="frame" x="161" y="169.5" width="71" height="41"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" systemColor="tintColor"/>
                     <constraints>
@@ -39,7 +38,7 @@
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This month:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pd-Sq-Pma">
-                    <rect key="frame" x="151.5" y="109" width="90" height="22"/>
+                    <rect key="frame" x="151.5" y="139" width="90" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="b4I-Xa-lFJ"/>
                         <constraint firstAttribute="width" constant="90" id="s80-Gj-We4"/>
@@ -58,15 +57,13 @@
                 <constraint firstItem="ocP-0P-VnP" firstAttribute="top" secondItem="7Pd-Sq-Pma" secondAttribute="bottom" constant="8.5" id="5HL-3l-MTf"/>
                 <constraint firstItem="7Pd-Sq-Pma" firstAttribute="centerX" secondItem="ocP-0P-VnP" secondAttribute="centerX" id="Vhe-py-aX8"/>
                 <constraint firstItem="ocP-0P-VnP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="egm-d0-KUm"/>
-                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="10" id="uQ1-mm-7Cr"/>
+                <constraint firstItem="ocP-0P-VnP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="uQ1-mm-7Cr"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="label" destination="ocP-0P-VnP" id="6gT-jK-qah"/>
-                <outlet property="labelCenterX" destination="egm-d0-KUm" id="CoS-md-Hgh"/>
-                <outlet property="labelCenterY" destination="uQ1-mm-7Cr" id="w8s-gu-UvG"/>
                 <outlet property="monthlyEnteryLabel" destination="7Pd-Sq-Pma" id="gbH-IF-fSH"/>
             </connections>
             <point key="canvasLocation" x="140" y="21"/>
@@ -77,10 +74,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

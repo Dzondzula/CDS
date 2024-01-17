@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable final class TrainingProgress: UIView {
+@IBDesignable 
+final class TrainingProgress: UIView {
 
     private enum Constants {
         static let arcWidth: CGFloat = 35
@@ -16,14 +17,11 @@ import UIKit
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var monthlyEnteryLabel: UILabel!
-    var numerOfTrainings: Int = 20
-    var counter: Int = 10
+    var numerOfTrainings: Int = 31
+    var counter: Int = 3
     var progressColor: UIColor = UIColor.blue
     var trackColor: UIColor = UIColor.opaqueSeparator
     var progressLayer = CAShapeLayer()
-
-
-    
 
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
@@ -31,8 +29,10 @@ import UIKit
     }
 
     override func draw(_ rect: CGRect) {
-        let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2 + Constants.arcWidth)
-        let radius = max(bounds.width - Constants.arcWidth, bounds.height - Constants.arcWidth)
+        guard let superview else {return}
+        let center = CGPoint(x: superview.bounds.width / 2, y: superview.bounds.height / 2 + Constants.arcWidth)
+
+        let radius = max(superview.bounds.width, superview.bounds.height )
 
         let startAngle: CGFloat = .pi
         let endAngle: CGFloat = 2 * .pi
@@ -48,7 +48,6 @@ import UIKit
         let progressEnd = perTraining * CGFloat(counter)
         addProgressLayer(progressLayer: progressLayer, path: path.cgPath, progressEnd: progressEnd)
         //progressLayer.strokeEnd += 0.5
-
     }
 
     func addProgressLayer(progressLayer: CAShapeLayer, path: CGPath,progressEnd: CGFloat) {
@@ -60,6 +59,10 @@ import UIKit
         progressLayer.isOpaque = false
         progressLayer.lineCap = .round
         layer.addSublayer(progressLayer)
+    }
+
+    override func layoutSubviews() {
+        self.sizeToFit()
     }
 
     //    func setProgressWithAnimation(duration: TimeInterval, value: Double) {

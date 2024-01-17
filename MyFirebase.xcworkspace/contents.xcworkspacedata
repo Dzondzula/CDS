@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MyWhiteLabel">
+   </FileRef>
+   <FileRef
       location = "group:MyFirebase.xcodeproj">
    </FileRef>
    <FileRef

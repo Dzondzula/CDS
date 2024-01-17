@@ -11,12 +11,17 @@ struct MemberCellSwiftUI2: View {
     var member: MembersRepresentable
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            HStack(spacing: 0) {
-                AsyncImage(url: member.imageUrl) {image in
+        HStack(spacing: 0) {
+            AsyncImage(url: member.imageUrl) {image in
 
-                    image.resizable().transition(.opacity.combined(with: .scale)).frame(width: 64, height: 64).cornerRadius(16)
-                } placeholder: { Image("CDS").resizable().transition(.opacity.combined(with: .scale)).frame(width: 64, height: 64).cornerRadius(16) }
+                image.resizable().transition(.opacity.combined(with: .scale)).frame(width: 90, height: 90).scaledToFit().cornerRadius(15)
+            } placeholder: { Image("CDS").resizable().transition(.opacity.combined(with: .scale)).frame(width: 90, height: 90).scaledToFit().cornerRadius(15) }
+        ZStack(alignment: .trailing) {
+            HStack(spacing: 0) {
+//                AsyncImage(url: member.imageUrl) {image in
+//
+//                    image.resizable().transition(.opacity.combined(with: .scale)).frame(width: 64, height: 64).cornerRadius(16)
+//                } placeholder: { Image("CDS").resizable().transition(.opacity.combined(with: .scale)).frame(width: 64, height: 64).cornerRadius(16) }
 
                 VStack(alignment: .leading, spacing: 4.0) {
                     Text(member.name + " " + member.lastName)
@@ -25,7 +30,6 @@ struct MemberCellSwiftUI2: View {
 
                     Text(member.isPaid ? String("Active: \(member.startDate)").dropLast(5) : String("Expired: \(member.endDate)").dropLast(5))
                         .lineLimit(1)
-                        .fontWeight(.light)
                         .font(.subheadline).dynamicTypeSize(.medium)
                         .foregroundColor(Color(uiColor: .gray))
                 }
@@ -35,12 +39,13 @@ struct MemberCellSwiftUI2: View {
                 .padding(.horizontal)
             }.padding(.bottom, 10)
 
-            HStack {
-
-                Text(member.trainings.first?.uppercased() ?? "").frame(width: 70).fontWeight(.bold)
-                    .font(.headline).dynamicTypeSize(.xxLarge)
+            VStack {
+                Spacer()
+                Text(member.trainings.first?.uppercased() ?? "")
+                    .font(.headline).dynamicTypeSize(.large).padding(.trailing, 10)
             }
-        }.padding([.vertical, .leading], 10)
+        }.frame(height: 90)
+    }
     }
 }
 
@@ -55,7 +60,6 @@ struct MemberCellSwiftUI: View {
         }
         .cornerRadius(12.0)
         .padding()
-        .shadow(color: .white.opacity(0.65), radius: 1, x: -1, y: -2)
         .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
     }
 }

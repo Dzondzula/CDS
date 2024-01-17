@@ -14,23 +14,41 @@ struct TrainingSections: Codable {
         return trainings
     }
 }
-enum WeekDay: String, Codable {
-    case Monday = "Monday"
-    case Tuesday = "Tuesday"
-    case Wednesday = "Wednesday"
-    case Thursday = "Thursday"
-    case  Friday = "Friday"
+
+enum WeekDay: Int, Codable {
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case  Friday
+
+    var description: String {
+        switch self {
+        case .Monday:
+                "Monday"
+        case .Tuesday:
+                "Tuesday"
+        case .Wednesday:
+                "Wednesday"
+        case .Thursday:
+                "Thursday"
+        case .Friday:
+                "Friday"
+        }
+    }
 }
+
 struct TrainingInfo: Codable {
+
+    var title: String
+    var image: String
+    var time: String
+
     init(title: String, image: String, time: String) {
         self.title = title
         self.image = image
         self.time = time
     }
-
-    var title: String
-    var image: String
-    var time: String
 
     func toAnyObject() -> Any {
         return [

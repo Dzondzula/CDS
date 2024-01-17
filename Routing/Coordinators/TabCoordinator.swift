@@ -7,6 +7,7 @@
 import Combine
 import Firebase
 import UIKit
+
 enum TabBarPage {
     case admin
     case user
@@ -53,11 +54,8 @@ enum TabBarPage {
                 return (UIImage(named: "event")?.resize(28.0, 28.0))!
         }
     }
-
-    // Add tab icon selected / deselected color
-
-    // etc
 }
+
 @MainActor
 class TabCoordinator: NSObject, TabBarBaseCoordinator {
     var parentCoordinator: Coordinator?
@@ -89,7 +87,8 @@ class TabCoordinator: NSObject, TabBarBaseCoordinator {
 
         self.rootViewController = self.prepareTabBarController(withTabControllers: controllers)
         return rootViewController as! UITabBarController
-}
+    }
+    
      func start() async -> UIViewController {
 
             let user = await dataManager.currentUserInformations()
@@ -99,9 +98,6 @@ class TabCoordinator: NSObject, TabBarBaseCoordinator {
             } else {
                 return  getRootTabBar(pages: [.user, .training])
             }
-
-
-
     }
 
 

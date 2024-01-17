@@ -10,29 +10,32 @@ import UIKit
 
 class CustomCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    var section: TrainingSections? {
-        didSet {
 
-            guard let section = self.section else {return}
-            self.titleLabel.text = section.weekDay.rawValue
-            self.trainings = section.training
-            self.collectionView.reloadData()
+    var isEditing: Bool = true {
+        didSet {
+            let cell = self.nestedCollectionView.visibleCells as? [SubCustomCell]
+            cell?.forEach{ $0.onEditMode(isActive: isEditing) }
         }
     }
-   lazy var trainings = [TrainingInfo]()
-    let collectionView: UICollectionView = {
-        // init the layout
+
+    var section: TrainingSections? {
+        didSet {
+            guard let section = self.section else {return}
+            self.dayTitleLabel.text = section.weekDay.description
+            self.trainings = section.training
+            self.nestedCollectionView.reloadData()
+        }
+    }
+
+    lazy var trainings = [TrainingInfo]()
+
+    let nestedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        // set the direction to be horizontal
         layout.scrollDirection = .horizontal
-
-        // the instance of collectionView
-
+        layout.collectionView?.allowsSelectionDuringEditing = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .black
-
-        // get the collection view a  backgroundColor
-
+        cv.backgroundColor = .systemGray6
+        cv.register(SubCustomCell.self, forCellWithReuseIdentifier: "subCellID")
         cv.translatesAutoresizingMaskIntoConstraints = false
 
         return cv
@@ -45,52 +48,51 @@ class CustomCell: UICollectionViewCell, UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SubCustomCell
-        // cell.backgroundColor = .yellow
         cell.training = trainings[indexPath.item]
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = frame.height / 2
-        let height = frame.height / 2
+        let width = frame.height / 1.4
+        let height = frame.height / 1.4
 
         return CGSize(width: width, height: height)
     }
-    let titleLabel: UILabel = {
+
+    let dayTitleLabel: UILabel = {
         let lb  = UILabel()
         lb.text = "Section Title"
-        lb.textColor = .white
-        lb.font = UIFont.boldSystemFont(ofSize: 20)
+        lb.textColor = .darkText
         lb.font = UIFont.boldSystemFont(ofSize: 30)
         lb.translatesAutoresizingMaskIntoConstraints = false
 
         return lb
     }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(titleLabel)
+        addSubview(dayTitleLabel)
 
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8 ).isActive = true
-        // titleLabel.bottomAnchor.constraint
+        dayTitleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        dayTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10 ).isActive = true
 
        setupSubCells()
-        collectionView.register(SubCustomCell.self, forCellWithReuseIdentifier: cellId)
+        nestedCollectionView.register(SubCustomCell.self, forCellWithReuseIdentifier: cellId)
     }
 
-    fileprivate  func setupSubCells() {
-        // add collectionView to the view
-        addSubview(collectionView)
 
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        // setup constrainst
+    private func setupSubCells() {
+        // add collectionView to the view
+        addSubview(nestedCollectionView)
+
+        nestedCollectionView.dataSource = self
+        nestedCollectionView.delegate = self
         // make it fit all the space of the CustomCell
-        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        nestedCollectionView.topAnchor.constraint(equalTo: dayTitleLabel.bottomAnchor).isActive = true
+        nestedCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        nestedCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        nestedCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

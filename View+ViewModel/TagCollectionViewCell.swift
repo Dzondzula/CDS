@@ -1,6 +1,7 @@
 import UIKit
+
 protocol SportTagCollectionHandler: UICollectionViewCell {
-    static var id : String { get }
+    static var id: String { get }
 }
 
 class TagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
@@ -34,9 +35,9 @@ class TagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
 
     lazy var sportLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor(red: 180 / 255, green: 180 / 255, blue: 180 / 255, alpha: 0.9)
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.backgroundColor = UIColor.systemGray5
+        label.textColor = .darkText
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -46,7 +47,7 @@ class TagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
         button.setImage(UIImage(systemName: "trash.circle.fill"), for: .normal)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 227 / 255, green: 52 / 255, blue: 69 / 255, alpha: 0.95)
+        button.backgroundColor = .systemRed
 
         return button
     }()
@@ -60,6 +61,7 @@ class TagCollectionViewCell: UICollectionViewCell, SportTagCollectionHandler {
         sportLabel.text = nil
     }
 }
+
 class CustomButton: UIButton {
     var section: Int = 0
     var row: Int = 0
